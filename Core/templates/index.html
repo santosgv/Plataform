@@ -702,44 +702,12 @@
 							</div>
 							<div class="myd-product-list myd-Bebidas myd-product-list--2columns">
 							<h2 class="myd-product-list__title" id="fdm-Bebidas">Bebidas</h2>
-							<div class="myd-product-item myd-product-item--boxshadow">
-								<div class="myd-product-item__content">
-									<h3 class="myd-product-item__title">CERVEJA SKOL 350 ML</h3>
-									<p class="myd-product-item__desc">QUE TAL UMA CERVEJINHA BEM GELADA?</p>
-								<div class="myd-product-item__actions">
-									<div class="myd-product-item__button" id="99">+</div>
-									<span class="myd-product-item__price">R$ 5,00</span>
-								</div></div>
-								<div class="myd-product-item__img" style="background-image:url(https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/3d662c7a86c90d75887aa8e9c206abeb.jpg)"></div>
-							</div>
 							<hr class="myd-product-item__divider">
-							<div class="fdm-popup-product-init" id="popup-99">
-									<div class="fdm-popup-product-content">
-										<div class="fdm-popup-close-btn"><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000" "="" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"></path></svg></div>
-										<div class="myd-product-popup__img" style="background-image:url(https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/3d662c7a86c90d75887aa8e9c206abeb.jpg)"></div>
-										<h3>CERVEJA SKOL 350 ML</h3>
-										<p>QUE TAL UMA CERVEJINHA BEM GELADA?</p>
-										<div class="teste">
-											<div class="fdm-product-add-extras">
-												
-
-											</div>
-											<input type="text" id="fdm-product-note-99" placeholder="Observação..." class="fdm-text-product-note">
-										</div>
-										<div class="fdm-popup-product-action">
-											<div class="fdm-popup-product-content-qty">
-												<div class="fdm-click-minus">-</div>
-												<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-												<div class="fdm-click-plus">+</div>
-											</div>
-											<div class="fdm-popup-product-content-add-cart">
-												<a class="fdm-add-to-cart-popup" id="99" data-name="CERVEJA SKOL 350 ML" data-price="5,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/3d662c7a86c90d75887aa8e9c206abeb.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"></path><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"></path><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"></path></svg> Adicionar ao carrinho</a>
-											</div>
-										</div>
-									</div>
-								</div><div class="myd-product-item myd-product-item--boxshadow">
+							
+							{% for produto in Produtos %}
+								<div class="myd-product-item myd-product-item--boxshadow">
 								<div class="myd-product-item__content">
-									<h3 class="myd-product-item__title">COCA-COLA</h3>
+									<h3 class="myd-product-item__title">{{produto}}</h3>
 									<p class="myd-product-item__desc"></p>
 								<div class="myd-product-item__actions">
 									<div class="myd-product-item__button" id="97">+</div>
@@ -753,7 +721,7 @@
 									<div class="fdm-popup-product-content">
 										<div class="fdm-popup-close-btn"><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000" "="" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"></path></svg></div>
 										<div class="myd-product-popup__img" style="background-image:url(https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/transferir.jpg)"></div>
-										<h3>COCA-COLA</h3>
+										<h3>{{produto}}</h3>
 										<p></p>
 										<div class="teste">
 											<div class="fdm-product-add-extras">
@@ -774,6 +742,7 @@
 										</div>
 									</div>
 								</div>
+								{% endfor %}
 							</div>    
 	</div>
 {% endblock %}
