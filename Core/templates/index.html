@@ -1,775 +1,289 @@
 {% extends 'base.html' %}
+
 {% load static %}
-  
+
 <title>{% block 'title' %}
-            Cardapio Digital 
-{% endblock %}</title>
-    
-{% block 'body'%}
-<div class="myd-content">
-	<div class="myd-content__filter">
-		<select class="fdm-select-category">
-			<option>Categoria</option>
-			<option value="Hamburguer">Hamburguer</option><option value="Pizza">Pizza</option><option value="Açai">Açai</option><option value="Bolos">Bolos</option><option value="Macarrão">Macarrão</option><option value="Salgados">Salgados</option><option value="Bebidas">Bebidas</option>            </select>
-	</div>
-	<div class="myd-product-list myd-Hamburguer myd-product-list--2columns">
-						<h2 class="myd-product-list__title" id="fdm-Hamburguer">Hamburguer</h2>
-						<div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">CHEESE BACON</h3>
-								<p class="myd-product-item__desc">HAMBURGUER, BACON,QUEIJO, PRESUNTO,ALFACE,TOMATE,MILHO E ERVILHA</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="263">+</div>
-								<span class="myd-product-item__price">R$ 27,50</span>
-							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/BACON.jpg)"></div>
-						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-263">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/BACON.jpg)"></div>
-									<h3>CHEESE BACON</h3>
-									<p>HAMBURGUER, BACON,QUEIJO, PRESUNTO,ALFACE,TOMATE,MILHO E ERVILHA</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
+	Pagina Inicial
+	{% endblock %}</title>
 
-										</div>
-										<input type="text" id="fdm-product-note-263" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="263" data-name="CHEESE BACON" data-price="27,50" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/BACON.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
+{% block 'body' %}
+	<div class="maincontent">
+		<div class="container">
+			<section id="menu">
+				<div class="block menu1">
+					<div class="buttons-container"> 
+						{% for categoria in Categorias %}
+						<a href="#" class="button button--is-active" data-target="pizzaMenu">Pizzas</a>
+						<a href="#" class="button" data-target="coffeeMenu">Drinks</a> 
+						<a href="#" class="button" data-target="noodlesMenu">Desserts</a>
+						<a href="#" class="button" data-target="{{categoria}}">{{categoria}}</a>
+						{% endfor %}
+					</div>
+					<!-- Start for  Menu -->
+					{% for categoria in Categorias %}
+					<!-- Start Pizza Menu -->
+					<div class="menu menu--is-visible" id="pizzaMenu" data-aos="fade-up">
+						<div class="item row align-items-center">
+							<div class="col-sm-3 pr-5">
+								<img class="product-img" src="./img/pizza-1.png">
+							</div>
+							<div class="details col-sm-9">
+								<div class="item__header">
+									<h3 class="item__title">Cheese Pizza</h3>
+									<span class="item__dots"></span>
+									<span class="item__price">$15</span>
 								</div>
-							</div><div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">DOUBLE CHEESE BURGUER</h3>
-								<p class="myd-product-item__desc">HAMBURGUER, QUEIJO E TOMATE</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="261">+</div>
-								<span class="myd-product-item__price">R$ 20,80</span>
+								<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Sunt quos harum
+									officia eaque nobis ut.</p>
+								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="1"
+									data-name="Cheese Pizza" data-price="15" data-quantity="1"
+									data-image="./img/pizza-1.png">Add to cart</button>
 							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/t-mcdonalds-Double-Cheeseburger.jpg)"></div>
 						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-261">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/t-mcdonalds-Double-Cheeseburger.jpg)"></div>
-									<h3>DOUBLE CHEESE BURGUER</h3>
-									<p>HAMBURGUER, QUEIJO E TOMATE</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
-
-										</div>
-										<input type="text" id="fdm-product-note-261" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="261" data-name="DOUBLE CHEESE BURGUER" data-price="20,80" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/t-mcdonalds-Double-Cheeseburger.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
+						<div class="item row align-items-center">
+							<div class="col-sm-3 pr-5">
+								<img class="product-img" src="./img/pizza-2.png">
+							</div>
+							<div class="details col-sm-9">
+								<div class="item__header">
+									<h3 class="item__title">Hot Pastrami</h3>
+									<span class="item__dots"></span>
+									<span class="item__price">$25</span>
 								</div>
+								<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Sunt quos harum
+									officia eaque nobis ut.</p>
+								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="2"
+									data-name="Hot Pastrami" data-price="25" data-quantity="1"
+									data-image="./img/pizza-2.png">Add to cart</button>
 							</div>
-						</div><div class="myd-product-list myd-Pizza myd-product-list--2columns">
-						<h2 class="myd-product-list__title" id="fdm-Pizza">Pizza</h2>
-						<div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">A MODA DA CASA</h3>
-								<p class="myd-product-item__desc">MUSSARELA, PRESUNTO, BACON, FRANGO, PALMITO, CALABRESA,CATUPIRY, MILHO, CEBOLA E PIMENTÃO</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="258">+</div>
-								<span class="myd-product-item__price">R$ 0,00</span>
-							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/pizza-a-moda-uma-das.jpg)"></div>
 						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-258">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/pizza-a-moda-uma-das.jpg)"></div>
-									<h3>A MODA DA CASA</h3>
-									<p>MUSSARELA, PRESUNTO, BACON, FRANGO, PALMITO, CALABRESA,CATUPIRY, MILHO, CEBOLA E PIMENTÃO</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">Pequena</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description">MUSSARELA, PRESUNTO, BACON, FRANGO, PALMITO, CALABRESA,CATUPIRY, MILHO, CEBOLA E PIMENTÃO</p>
-			<span class="myd-extra-price">R$ 20,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="20,00" data-type="Pequena" data-limit="" class="option_prod_exta Pequena" name="option_prod_exta[]" value=" - 20">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">Média</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description">MUSSARELA, PRESUNTO, BACON, FRANGO, PALMITO, CALABRESA,CATUPIRY, MILHO, CEBOLA E PIMENTÃO</p>
-			<span class="myd-extra-price">R$ 25,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="25,00" data-type="Média" data-limit="" class="option_prod_exta Média" name="option_prod_exta[]" value=" - 25">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">Grande</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description">MUSSARELA, PRESUNTO, BACON, FRANGO, PALMITO, CALABRESA,CATUPIRY, MILHO, CEBOLA E PIMENTÃO</p>
-			<span class="myd-extra-price">R$ 35,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="35,00" data-type="Grande" data-limit="" class="option_prod_exta Grande" name="option_prod_exta[]" value=" - 35">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-										</div>
-										<input type="text" id="fdm-product-note-258" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="258" data-name="A MODA DA CASA" data-price="0,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/pizza-a-moda-uma-das.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
+						<div class="item row align-items-center">
+							<div class="col-sm-3 pr-5">
+								<img class="product-img" src="./img/pizza-3.png">
+							</div>
+							<div class="details col-sm-9">
+								<div class="item__header">
+									<h3 class="item__title">Classic Pizza</h3>
+									<span class="item__dots"></span>
+									<span class="item__price">$20</span>
 								</div>
-							</div><div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">FRANGO À BOLONHESA</h3>
-								<p class="myd-product-item__desc">MUSSARELA, FRANGO, MOLHO E MILHO</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="260">+</div>
-								<span class="myd-product-item__price">R$ 0,00</span>
+								<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Sunt quos harum
+									officia eaque nobis ut.</p>
+								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="3"
+									data-name="Classic Pizza" data-price="20" data-quantity="1"
+									data-image="./img/pizza-3.png">Add to cart</button>
 							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/Pizza_frango_requeijao-1.jpg)"></div>
 						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-260">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/Pizza_frango_requeijao-1.jpg)"></div>
-									<h3>FRANGO À BOLONHESA</h3>
-									<p>MUSSARELA, FRANGO, MOLHO E MILHO</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">Pequena</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description">MUSSARELA, FRANGO, MOLHO E MILHO</p>
-			<span class="myd-extra-price">R$ 15,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="15,00" data-type="Pequena" data-limit="" class="option_prod_exta Pequena" name="option_prod_exta[]" value=" - 15">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">Média</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description">MUSSARELA, FRANGO, MOLHO E MILHO</p>
-			<span class="myd-extra-price">R$ 25,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="25,00" data-type="Média" data-limit="" class="option_prod_exta Média" name="option_prod_exta[]" value=" - 25">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">Grande</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description">MUSSARELA, FRANGO, MOLHO E MILHO</p>
-			<span class="myd-extra-price">R$ 35,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="35,00" data-type="Grande" data-limit="" class="option_prod_exta Grande" name="option_prod_exta[]" value=" - 35">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-										</div>
-										<input type="text" id="fdm-product-note-260" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="260" data-name="FRANGO À BOLONHESA" data-price="0,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/Pizza_frango_requeijao-1.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
+						<div class="item row align-items-center">
+							<div class="col-sm-3 pr-5">
+								<img class="product-img" src="./img/pizza-4.png">
+							</div>
+							<div class="details col-sm-9">
+								<div class="item__header">
+									<h3 class="item__title">Country Pizza</h3>
+									<span class="item__dots"></span>
+									<span class="item__price">$17</span>
 								</div>
+								<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Sunt quos harum
+									officia eaque nobis ut.</p>
+								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="4"
+									data-name="Country Pizza" data-price="17" data-quantity="1"
+									data-image="./img/pizza-4.png">Add to cart</button>
 							</div>
-						</div><div class="myd-product-list myd-Açai myd-product-list--2columns">
-						<h2 class="myd-product-list__title" id="fdm-Açai">Açai</h2>
-						<div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">CREME DE AÇAI &#8211; 300 ML</h3>
-								<p class="myd-product-item__desc">ACOMPANHA BANANA E MORANGO - CLIQUE PARA ADICIONAR OUTROS ACRÉSCIMOS</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="265">+</div>
-								<span class="myd-product-item__price">R$ 8,00</span>
-							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/creme-de-acai-classico.jpg)"></div>
 						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-265">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/creme-de-acai-classico.jpg)"></div>
-									<h3>CREME DE AÇAI &#8211; 300 ML</h3>
-									<p>ACOMPANHA BANANA E MORANGO - CLIQUE PARA ADICIONAR OUTROS ACRÉSCIMOS</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
+					</div>
+					<!-- End Pizza Menu -->
 
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
+					<!-- Start Coffee Menu -->
+					<div class="menu" id="coffeeMenu">
+						<div class="item">
+							<div class="item__header">
+								<h3 class="item__title">Cappuccino</h3>
+								<span class="item__dots"></span>
+								<span class="item__price">$4</span>
+							</div>
+							<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+								quos harum
+								officia eaque nobis ut.</p>
+						</div>
+						<div class="item">
+							<div class="item__header">
+								<h3 class="item__title">Iced Coffee</h3>
+								<span class="item__dots"></span>
+								<span class="item__price">$5</span>
+							</div>
+							<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+								quos harum
+								officia eaque nobis ut.</p>
+						</div>
+						<div class="item">
+							<div class="item__header">
+								<h3 class="item__title">Café Latte</h3>
+								<span class="item__dots"></span>
+								<span class="item__price">$3</span>
+							</div>
+							<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+								quos harum
+								officia eaque nobis ut.</p>
+						</div>
+						<div class="item">
+							<div class="item__header">
+								<h3 class="item__title">Espresso</h3>
+								<span class="item__dots"></span>
+								<span class="item__price">$4</span>
+							</div>
+							<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+								quos harum
+								officia eaque nobis ut.</p>
+						</div>
+					</div>
+					<!-- End Coffee Menu -->
+					
+					<!-- Start Noodles Menu -->
+					<div class="menu" id="noodlesMenu">
+						<div class="item">
+							<div class="item__header">
+								<h3 class="item__title">Chicken Noodles</h3>
+								<span class="item__dots"></span>
+								<span class="item__price">$16</span>
+							</div>
+							<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+								quos harum
+								officia eaque nobis ut.</p>
+						</div>
+						<div class="item">
+							<div class="item__header">
+								<h3 class="item__title">Egg Noodles</h3>
+								<span class="item__dots"></span>
+								<span class="item__price">$12</span>
+							</div>
+							<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+								quos harum
+								officia eaque nobis ut.</p>
+						</div>
+						<div class="item">
+							<div class="item__header">
+								<h3 class="item__title">Veg Noodles</h3>
+								<span class="item__dots"></span>
+								<span class="item__price">$10</span>
+							</div>
+							<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+								quos harum
+								officia eaque nobis ut.</p>
+						</div>
+						<div class="item">
+							<div class="item__header">
+								<h3 class="item__title">Chuck Norris Noodles</h3>
+								<span class="item__dots"></span>
+								<span class="item__price">$20</span>
+							</div>
+							<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+								quos harum
+								officia eaque nobis ut.</p>
+						</div>
+					</div>
 
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">PAÇOCA</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description"></p>
-			<span class="myd-extra-price">R$ 2,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="2,00" data-type="PAÇOCA" data-limit="" class="option_prod_exta PAÇOCA" name="option_prod_exta[]" value=" - 2.00">
+					<div class="menu menu--is-visible" id="{{categoria}}" data-aos="fade-up">
+						<div class="item row align-items-center">
+							<div class="col-sm-3 pr-5">
+								<img class="product-img" src="./img/pizza-1.png">
+							</div>
+							<div class="details col-sm-9">
+								<div class="item__header">
+									<h3 class="item__title">Aqui Pizza</h3>
+									<span class="item__dots"></span>
+									<span class="item__price">$105</span>
+								</div>
+								<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Sunt quos harum
+									officia eaque nobis ut.</p>
+								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="1"
+									data-name="Aqui Pizza" data-price="105" data-quantity="1"
+									data-image="./img/pizza-1.png">Add to cart</button>
+							</div>
+						</div>
+						<div class="item row align-items-center">
+							<div class="col-sm-3 pr-5">
+								<img class="product-img" src="./img/pizza-2.png">
+							</div>
+							<div class="details col-sm-9">
+								<div class="item__header">
+									<h3 class="item__title">Hot Pastrami</h3>
+									<span class="item__dots"></span>
+									<span class="item__price">$25</span>
+								</div>
+								<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Sunt quos harum
+									officia eaque nobis ut.</p>
+								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="2"
+									data-name="Hot Pastrami" data-price="25" data-quantity="1"
+									data-image="./img/pizza-2.png">Add to cart</button>
+							</div>
+						</div>
+						<div class="item row align-items-center">
+							<div class="col-sm-3 pr-5">
+								<img class="product-img" src="./img/pizza-3.png">
+							</div>
+							<div class="details col-sm-9">
+								<div class="item__header">
+									<h3 class="item__title">Classic Pizza</h3>
+									<span class="item__dots"></span>
+									<span class="item__price">$20</span>
+								</div>
+								<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Sunt quos harum
+									officia eaque nobis ut.</p>
+								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="3"
+									data-name="Classic Pizza" data-price="20" data-quantity="1"
+									data-image="./img/pizza-3.png">Add to cart</button>
+							</div>
+						</div>
+						<div class="item row align-items-center">
+							<div class="col-sm-3 pr-5">
+								<img class="product-img" src="./img/pizza-4.png">
+							</div>
+							<div class="details col-sm-9">
+								<div class="item__header">
+									<h3 class="item__title">Country Pizza</h3>
+									<span class="item__dots"></span>
+									<span class="item__price">$17</span>
+								</div>
+								<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Sunt quos harum
+									officia eaque nobis ut.</p>
+								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="4"
+									data-name="Country Pizza" data-price="17" data-quantity="1"
+									data-image="./img/pizza-4.png">Add to cart</button>
+							</div>
+						</div>
+					</div>
+					<!-- End Noodles Menu -->
+					{% endfor %}
+					<!-- End For Menu -->
+				</div>
+				<!-- End block -->
+				<script src="{% static 'js/mycart.js' %}"></script>
+				<script src="{% static 'js/mycart-custom.js' %}"></script>
+			</section>
 		</div>
 	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">CREME DE AVELÂ</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description"></p>
-			<span class="myd-extra-price">R$ 5,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="5,00" data-type="CREME DE AVELÂ" data-limit="" class="option_prod_exta CREME-DE-AVELÂ" name="option_prod_exta[]" value=" - 5.00">
-		</div>
+	<div class="nav-item my-cart-icon">
+		<img src="{% static 'img/cart.svg' %} " style="width:20px;"> <span class="badge badge-notify my-cart-badge"> </span>
 	</div>
-	<hr class="myd-space-extras">
+	<footer class="block footer1 footer text-center">
+		<p>&copy; <a href="https://bootstrapstarter.com/bootstrap-templates/template-fooddelivery-bootstrap-html/">"Food
+				Delivery HTML Template"</a> by
+			WowThemes.net</p>
+	</footer>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+	<script src="{% static 'js/custom-general.js' %}"></script>
 
-
-</div>
-</div>
-
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">LEITE CONDENSADO</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description"></p>
-			<span class="myd-extra-price">R$ 3,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="3,00" data-type="LEITE CONDENSADO" data-limit="" class="option_prod_exta LEITE-CONDENSADO" name="option_prod_exta[]" value=" - 3.00">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-										</div>
-										<input type="text" id="fdm-product-note-265" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="265" data-name="CREME DE AÇAI &#8211; 300 ML" data-price="8,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/creme-de-acai-classico.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
-								</div>
-							</div><div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">CREME DE AÇAI &#8211; 500 ML</h3>
-								<p class="myd-product-item__desc">ACOMPANHA BANANA E MORANGO - CLIQUE PARA ADICIONAR OUTROS ACRÉSCIMOS</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="268">+</div>
-								<span class="myd-product-item__price">R$ 13,00</span>
-							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/creme-de-acai-classico.jpg)"></div>
-						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-268">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/creme-de-acai-classico.jpg)"></div>
-									<h3>CREME DE AÇAI &#8211; 500 ML</h3>
-									<p>ACOMPANHA BANANA E MORANGO - CLIQUE PARA ADICIONAR OUTROS ACRÉSCIMOS</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">PAÇOCA</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description"></p>
-			<span class="myd-extra-price">R$ 2,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="2,00" data-type="PAÇOCA" data-limit="" class="option_prod_exta PAÇOCA" name="option_prod_exta[]" value=" - 2.00">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">CREME DE AVELÂ</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description"></p>
-			<span class="myd-extra-price">R$ 5,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="5,00" data-type="CREME DE AVELÂ" data-limit="" class="option_prod_exta CREME-DE-AVELÂ" name="option_prod_exta[]" value=" - 5.00">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-<div>
-<div class="fdm-extra-option-title" data-obj="" data-select-limit="">
-
-<div class="fdm-extra-option-title-text">
-	<span class="fdm-extra-option-limit-text">LEITE CONDENSADO</span> 
-	<span class="fdm-extra-option-limit-desc"></span> 
-	<span class="fdm-extra-option-required"></span>
-</div>
-
-		
-	<div class="myd-extra-item-loop">
-		<div class="myd-extra-item-loop-text">
-
-			<label class="myd-extra-label" for="option_prod_exta[]"></label><br>
-			<p class="myd-extra-description"></p>
-			<span class="myd-extra-price">R$ 3,00</span>
-		</div>
-		<div class="myd-extra-item-loop-checkbox">
-
-			<input type="checkbox" data-name="" data-price="3,00" data-type="LEITE CONDENSADO" data-limit="" class="option_prod_exta LEITE-CONDENSADO" name="option_prod_exta[]" value=" - 3.00">
-		</div>
-	</div>
-	<hr class="myd-space-extras">
-
-
-</div>
-</div>
-
-
-										</div>
-										<input type="text" id="fdm-product-note-268" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="268" data-name="CREME DE AÇAI &#8211; 500 ML" data-price="13,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/creme-de-acai-classico.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div><div class="myd-product-list myd-Salgados myd-product-list--2columns">
-						<h2 class="myd-product-list__title" id="fdm-Salgados">Salgados</h2>
-						<div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">COXINHA DE FRANGO</h3>
-								<p class="myd-product-item__desc">MASSA ESPECIAL DE COXINHA DE FRANGO</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="69">+</div>
-								<span class="myd-product-item__price">R$ 4,00</span>
-							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/coxinha.jpg)"></div>
-						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-69">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/coxinha.jpg)"></div>
-									<h3>COXINHA DE FRANGO</h3>
-									<p>MASSA ESPECIAL DE COXINHA DE FRANGO</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
-
-										</div>
-										<input type="text" id="fdm-product-note-69" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="69" data-name="COXINHA DE FRANGO" data-price="4,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/coxinha.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
-								</div>
-							</div><div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">ENROLADO DE SALSICHA</h3>
-								<p class="myd-product-item__desc">ENROLADINHO DE SALSICHA COM MASSA EMPANADA CROCANTE</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="76">+</div>
-								<span class="myd-product-item__price">R$ 3,00</span>
-							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/enroladinho-frito-de-salsicha.jpg)"></div>
-						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-76">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/enroladinho-frito-de-salsicha.jpg)"></div>
-									<h3>ENROLADO DE SALSICHA</h3>
-									<p>ENROLADINHO DE SALSICHA COM MASSA EMPANADA CROCANTE</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
-
-										</div>
-										<input type="text" id="fdm-product-note-76" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="76" data-name="ENROLADO DE SALSICHA" data-price="3,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/enroladinho-frito-de-salsicha.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
-								</div>
-							</div><div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">Quibe</h3>
-								<p class="myd-product-item__desc">Quibe gostoso</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="276">+</div>
-								<span class="myd-product-item__price">R$ 8,00</span>
-							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/transferir-1.jpg)"></div>
-						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-276">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/transferir-1.jpg)"></div>
-									<h3>Quibe</h3>
-									<p>Quibe gostoso</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
-
-										</div>
-										<input type="text" id="fdm-product-note-276" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="276" data-name="Quibe" data-price="8,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/transferir-1.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div><div class="myd-product-list myd-Bebidas myd-product-list--2columns">
-						<h2 class="myd-product-list__title" id="fdm-Bebidas">Bebidas</h2>
-						<div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">CERVEJA SKOL 350 ML</h3>
-								<p class="myd-product-item__desc">QUE TAL UMA CERVEJINHA BEM GELADA?</p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="99">+</div>
-								<span class="myd-product-item__price">R$ 5,00</span>
-							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/3d662c7a86c90d75887aa8e9c206abeb.jpg)"></div>
-						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-99">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/3d662c7a86c90d75887aa8e9c206abeb.jpg)"></div>
-									<h3>CERVEJA SKOL 350 ML</h3>
-									<p>QUE TAL UMA CERVEJINHA BEM GELADA?</p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
-
-										</div>
-										<input type="text" id="fdm-product-note-99" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="99" data-name="CERVEJA SKOL 350 ML" data-price="5,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/3d662c7a86c90d75887aa8e9c206abeb.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
-								</div>
-							</div><div class="myd-product-item myd-product-item--boxshadow">
-							<div class="myd-product-item__content">
-								<h3 class="myd-product-item__title">COCA-COLA</h3>
-								<p class="myd-product-item__desc"></p>
-							<div class="myd-product-item__actions">
-								<div class="myd-product-item__button" id="97">+</div>
-								<span class="myd-product-item__price">R$ 10,00</span>
-							</div>
-							</div>
-							<div class="myd-product-item__img" style="background-image:url(wp-content/uploads/2021/02/transferir.jpg)"></div>
-						</div>
-						<hr class="myd-product-item__divider">
-						<div class="fdm-popup-product-init" id="popup-97">
-								<div class="fdm-popup-product-content">
-									<div class=fdm-popup-close-btn><svg height="16pt" viewBox="0 0 511.992 511.992" fill="#800000"" width="16pt" xmlns="http://www.w3.org/2000/svg"><path d="m415.402344 495.421875-159.40625-159.410156-159.40625 159.410156c-22.097656 22.09375-57.921875 22.09375-80.019532 0-22.09375-22.097656-22.09375-57.921875 0-80.019531l159.410157-159.40625-159.410157-159.40625c-22.09375-22.097656-22.09375-57.921875 0-80.019532 22.097657-22.09375 57.921876-22.09375 80.019532 0l159.40625 159.410157 159.40625-159.410157c22.097656-22.09375 57.921875-22.09375 80.019531 0 22.09375 22.097657 22.09375 57.921876 0 80.019532l-159.410156 159.40625 159.410156 159.40625c22.09375 22.097656 22.09375 57.921875 0 80.019531-22.097656 22.09375-57.921875 22.09375-80.019531 0zm0 0"/></svg></div>
-									<div class="myd-product-popup__img" style="background-image:url(wp-content/uploads/2021/02/transferir.jpg)"></div>
-									<h3>COCA-COLA</h3>
-									<p></p>
-									<div class="teste">
-										<div class="fdm-product-add-extras">
-											
-
-										</div>
-										<input type="text" id="fdm-product-note-97" placeholder="Observação..." class="fdm-text-product-note">
-									</div>
-									<div class="fdm-popup-product-action">
-										<div class="fdm-popup-product-content-qty">
-											<div class="fdm-click-minus">-</div>
-											<input type="text" class="fdm-popup-input-text fmd-item-qty" value="1">
-											<div class="fdm-click-plus">+</div>
-										</div>
-										<div class="fdm-popup-product-content-add-cart">
-											<a class="fdm-add-to-cart-popup" id="97" data-name="COCA-COLA" data-price="10,00" data-image="https://apresentacao.pegaocardapio.com.br/wp-content/uploads/2021/02/transferir.jpg"><svg height="10pt" id="icon-fdm-plugin-cart" viewBox="0 -31 512.00026 512" width="10pt" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF"><path d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0"/><path d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/><path d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0"/></svg> Adicionar ao carrinho</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>    </div>
 {% endblock %}
