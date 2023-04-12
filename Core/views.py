@@ -3,7 +3,7 @@ from .models import Produto,Categoria
 
 def index(response):
     Categorias = Categoria.objects.all()
-    Produtos = Produto.objects.all()
+    Produtos = Produto.objects.all().filter(ativo=True)
     return render(response,'index.html',{
                                          'Categorias':Categorias,
                                          'Produtos':Produtos,
@@ -11,12 +11,12 @@ def index(response):
 
 def categoria(response,id):
     Categorias = Categoria.objects.all()
-    Produtos = Produto.objects.filter(categoria = id)
+    Produtos = Produto.objects.all().filter(categoria=id).filter(ativo=True)
 
     return render(response,'index.html',{
                                          'Produtos':Produtos,
                                          'Categorias':Categorias,
                                          })
 
-def produto(response):
-    return render(response,'templates/home')
+def login(response):
+    return render(response,'login.html')
