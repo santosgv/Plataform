@@ -13,13 +13,18 @@
 				<div class="block menu1">
 					<div class="buttons-container"> 
 						{% for categoria in Categorias %}
-						<a href="#" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
+						<a href="{% url 'categoria' categoria.id %}" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
 						{% endfor %}
 					</div>
 					<!-- Start for  Menu -->
 					{% for categoria in Categorias %}
 					<div class="menu" id="{{categoria}}" data-aos="fade-up">
+
+						<h1>{{categoria}}</h1>
+						
 						{% for produto in Produtos %}
+						{% if produto.ativo %}
+
 						<div class="item row align-items-center">
 							<div class="col-sm-3 pr-5">
 								<img class="product-img" src="/media/{{produto.img}}">
@@ -38,6 +43,7 @@
 									data-image="/media/{{produto.img}}">Add to cart</button>
 							</div>
 						</div>
+						{% endif %}
 						{% endfor %}
 					</div>
 					{% endfor %}
