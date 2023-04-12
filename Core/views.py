@@ -1,22 +1,141 @@
-from django.shortcuts import render
-from .models import Produto,Categoria
+from django.shortcuts import redirect, render
+from .models import Adicional, Opcoes, Produto,Categoria
+from django.contrib import messages
+from django.contrib.messages import constants
 
-def index(response):
+def index(request):
+    if not request.session.get('carrinho'):
+        request.session['carrinho'] = []
+        request.session.save()
     Categorias = Categoria.objects.all()
     Produtos = Produto.objects.all().filter(ativo=True)
-    return render(response,'index.html',{
+    return render(request,'index.html',{
                                          'Categorias':Categorias,
                                          'Produtos':Produtos,
+                                          'carrinho': len(request.session['carrinho']),
                                          })
 
-def categoria(response,id):
+def categoria(request,id):
+    if not request.session.get('carrinho'):
+        request.session['carrinho'] = []
+        request.session.save()
     Categorias = Categoria.objects.all()
     Produtos = Produto.objects.all().filter(categoria=id).filter(ativo=True)
 
-    return render(response,'index.html',{
+    return render(request,'index.html',{
                                          'Produtos':Produtos,
                                          'Categorias':Categorias,
                                          })
 
-def login(response):
-    return render(response,'login.html')
+def login(request):
+    return render(request,'login.html')
+
+def produto(request, id):
+    if not request.session.get('carrinho'):
+        request.session['carrinho'] = []
+        request.session.save()
+
+
+    produto = Produto.objects.filter(id=id)[0]
+    categorias = Categoria.objects.all()
+    return render(request, 'produto.html', {'produto': produto,
+                                            'carrinho': len(request.session['carrinho']),
+                                            'categorias': categorias,
+                                           })
+
+
+
+def add_carrinho(request):
+    if not request.session.get('carrinho'):
+        request.session['carrinho'] = []
+        request.session.save()
+
+    x = dict(request.POST)
+
+    def removeLixo():
+        adicionais = x.copy()
+        adicionais.pop('id')
+        adicionais.pop('csrfmiddlewaretoken')
+        adicionais.pop('observacoes')
+        adicionais.pop('quantidade')
+        adicionais = list(adicionais.items())
+
+        return adicionais
+
+    adicionais = removeLixo()
+
+    id = int(x['id'][0])
+    preco_total = Produto.objects.filter(id=id)[0].preco
+    adicionais_verifica = Adicional.objects.filter(produto=id)
+    aprovado = True
+
+    for i in adicionais_verifica:
+        encontrou = False
+        minimo = i.minimo
+        maximo = i.maximo
+        for j in adicionais:
+            if i.nome == j[0]:
+                encontrou = True
+                if len(j[1]) < minimo or len(j[1]) > maximo:
+                    aprovado = False
+        if minimo > 0 and encontrou == False:
+            aprovado = False
+
+    if not aprovado:
+        messages.add_message(request, constants.ERROR, 'Confira a quantidade de adicionais selecionados')
+        return redirect(f'/produto/{id}')
+
+    for i, j in adicionais:
+        for k in j:
+            preco_total += Opcoes.objects.filter(id=int(k))[0].acrecimo
+
+    def troca_id_por_nome_adicional(adicional):
+        adicionais_com_nome = []
+        for i in adicionais:
+            opcoes = []
+            for j in i[1]:
+                op = Opcoes.objects.filter(id=int(j))[0].nome
+                opcoes.append(op)
+            adicionais_com_nome.append((i[0], opcoes))
+        return adicionais_com_nome
+
+    adicionais = troca_id_por_nome_adicional(adicionais)
+
+    preco_total *= int(x['quantidade'][0])
+    data = {'id_produto': int(x['id'][0]),
+            'observacoes': x['observacoes'][0],
+            'preco': preco_total,
+            'adicionais': adicionais,
+            'quantidade': x['quantidade'][0]}
+
+    request.session['carrinho'].append(data)
+    request.session.save()
+
+    return redirect(f'/ver_carrinho')
+
+
+def ver_carrinho(request):
+    categorias = Categoria.objects.all()
+    dados_motrar = []
+    for i in request.session['carrinho']:
+        prod = Produto.objects.filter(id=i['id_produto'])
+        dados_motrar.append(
+            {'imagem': prod[0].img.url,
+             'nome': prod[0].nome_produto,
+             #'quantidade': i['quantidade'],
+             #'observacoes': i['observacoes'],
+             'preco': i['preco'],
+             'id': i['id_produto']
+             }
+        )
+    total = sum([float(i['preco']) for i in request.session['carrinho']])
+
+    return render(request, 'carrinho.html', {'dados': dados_motrar,
+                                             'total': total,
+                                             'carrinho': len(request.session['carrinho']),
+                                             'categorias': categorias
+                                             })
+def remover_carrinho(request, id):
+    request.session['carrinho'].pop(id)
+    request.session.save()
+    return redirect('/ver_carrinho')

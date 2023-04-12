@@ -34,9 +34,9 @@
 								</div>
 								<p class="item__description">{{produto.descricao}}</p>
 								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
-								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
+								<a href="{% url 'produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
 									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="/media/{{produto.img}}">Add to cart</button>
+									data-image="/media/{{produto.img}}">Ver Produto</a>
 							</div>
 						</div>
 						{% endif %}
@@ -46,24 +46,9 @@
 					<!-- End For Menu -->
 				</div>
 				<!-- End block -->
-				<script src="{% static 'js/mycart.js' %}"></script>
-				<script src="{% static 'js/mycart-custom.js' %}"></script>
 			</section>
 		</div>
 	</div>
-	<div class="nav-item my-cart-icon">
-		<img src="{% static 'img/cart.svg' %} " style="width:20px;"> <span class="badge badge-notify my-cart-badge"> </span>
-	</div>
-	<footer class="block footer1 footer text-center">
-		<p>&copy; <a href="https://bootstrapstarter.com/bootstrap-templates/template-fooddelivery-bootstrap-html/">"Food
-				Delivery HTML Template"</a> by
-			WowThemes.net</p>
-	</footer>
-	<script src="{% static 'js/bootstrap.min.js' %}"></script>
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-	<script>
-		AOS.init();
-	</script>
-	<script src="{% static 'js/custom-general.js' %}"></script>
+
 
 {% endblock %}

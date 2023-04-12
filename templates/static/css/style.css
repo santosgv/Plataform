@@ -394,6 +394,11 @@ mark,
   max-width: 100%;
   height: auto; }
 
+  .tamanhoImg {
+    max-width: 50%;
+    max-height: 50%;
+  }
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
