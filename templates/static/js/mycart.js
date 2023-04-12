@@ -159,6 +159,7 @@
     var idEmptyCartMessage = 'my-cart-empty-message';
     var classAffixMyCartIcon = 'my-cart-icon-affix';
     var idDiscountPrice = 'my-cart-discount-price';
+    var idFretePrice = 'my-cart-frete-price';
 
     $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
 
@@ -175,8 +176,8 @@
         '<table class="table table-hover table-responsive" id="' + idCartTable + '"></table>' +
         '</div>' +
         '<div class="modal-footer">' +
-        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
-        '<button type="button" class="btn btn-primary" id="' + idCheckoutCart + '">Checkout</button>' +
+        '<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>' +
+        '<button type="button" class="btn btn-primary" id="' + idCheckoutCart + '">Finalizar</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -198,7 +199,7 @@
           '<td title="Unit Price">$' + this.price + '</td>' +
           '<td title="Quantity"><input type="number" min="1" style="width: 70px;" class="' + classProductQuantity + '" value="' + this.quantity + '"/></td>' +
           '<td title="Total" class="' + classProductTotal + '">$' + total + '</td>' +
-          '<td title="Remove from Cart" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
+          '<td title="Remover do Carrinho" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
           '</tr>'
         );
       });
@@ -215,6 +216,7 @@
         : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Seu Carrinho esta Vazio</div>'
       );
 
+        /*
       var discountPrice = options.getDiscountPrice(products);
       if(discountPrice !== null) {
         $cartTable.append(
@@ -228,9 +230,11 @@
           '</tr>'
         );
       }
-
+      */
       showGrandTotal(products);
-      showDiscountPrice(products);
+      /*
+      TAG DESCONTOS
+      showDiscountPrice(products); */
     }
     var showModal = function(){
       drawTable();
@@ -249,9 +253,12 @@
       });
       $("#" + idGrandTotal).text("$" + total);
     }
+    /*
+    TAG DE DESCONTOS
     var showDiscountPrice = function(products){
       $("#" + idDiscountPrice).text("$" + options.getDiscountPrice(products));
     }
+    */
 
     /*
     EVENT
@@ -281,7 +288,9 @@
       $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
       var products = ProductManager.getAllProducts();
       showGrandTotal(products);
-      showDiscountPrice(products);
+      /*
+      TAG DESCONTOS
+      showDiscountPrice(products); */
     });
 
     $(document).on('click', "." + classProductRemove, function(){

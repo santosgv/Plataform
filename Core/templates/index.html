@@ -18,13 +18,10 @@
 					</div>
 					<!-- Start for  Menu -->
 					{% for categoria in Categorias %}
+					
 					<div class="menu" id="{{categoria}}" data-aos="fade-up">
-
-						<h1>{{categoria}}</h1>
-						
 						{% for produto in Produtos %}
-						{% if produto.ativo %}
-
+						{% if produto.categoria.id == categoria.id %}
 						<div class="item row align-items-center">
 							<div class="col-sm-3 pr-5">
 								<img class="product-img" src="/media/{{produto.img}}">
@@ -35,9 +32,8 @@
 									<span class="item__dots"></span>
 									<span class="item__price">${{produto.preco|floatformat}}</span>
 								</div>
-								<p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									Sunt quos harum
-									officia eaque nobis ut.</p>
+								<p class="item__description">{{produto.descricao}}</p>
+								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
 								<button class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
 									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
 									data-image="/media/{{produto.img}}">Add to cart</button>
