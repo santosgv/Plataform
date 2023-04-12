@@ -7,7 +7,8 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name='index'),
-    path("produto/", views.produto, name='produto'),
+    path("categoria/<int:id>", views.categoria , name='categoria'),
+    path("produto/<int:id>", views.produto, name='produto'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -212,7 +212,7 @@
         '<td><strong id="' + idGrandTotal + '">$</strong></td>' +
         '<td></td>' +
         '</tr>'
-        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Your cart is empty</div>'
+        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Seu Carrinho esta Vazio</div>'
       );
 
       var discountPrice = options.getDiscountPrice(products);
@@ -220,7 +220,7 @@
         $cartTable.append(
           '<tr style="color: red">' +
           '<td></td>' +
-          '<td><strong>Total (including discount)</strong></td>' +
+          '<td><strong>Total (Incluindo Descontos)</strong></td>' +
           '<td></td>' +
           '<td></td>' +
           '<td><strong id="' + idDiscountPrice + '">$</strong></td>' +
