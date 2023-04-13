@@ -173,9 +173,8 @@
 
     <h3 class="rosa">Meio de pagamento*:</h3>
     <select name="meio_pagamento" class="form-control" onchange="javascript:dinheiro(this);">
-        {% for meio in meiosPagamento %}
-      <option value="{{meio.id}}">{{meio}}</option>
-      {% endfor %}
+        <option value="1">Dinheiro</option>
+        <option value="2">Cartão</option>
     </select>
 
     <div id="troco">

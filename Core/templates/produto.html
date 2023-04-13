@@ -8,10 +8,10 @@
 <div style="align-items: center; text-align: center;">
     <br>
     <div class="container">
-        {% if messages%}
-        {% for i in messages%}
-        <div class="alert {{i.tags}}" role="alert">
-            {{i}}
+        {% if messages %}
+        {% for mensagem in messages%}
+        <div class="alert {{mensagem.tags}}" role="alert">
+            {{mensagem}}
         </div>
         {%endfor%}
         {%endif%}

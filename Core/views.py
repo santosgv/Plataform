@@ -1,7 +1,7 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .models import Adicional, CupomDesconto, ItemPedido, Opcao, Pedido, Produto,Categoria , Bairro , MeioPagamento
+from .models import Adicional, CupomDesconto, ItemPedido, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
 from django.contrib import messages
 from django.contrib.messages import constants
 
@@ -11,10 +11,12 @@ def index(request):
         request.session.save()
     Categorias = Categoria.objects.all()
     Produtos = Produto.objects.all().filter(ativo=True)
+    avisos =Aviso.objects.all().filter(ativo=True).filter(para = '1')
     return render(request,'index.html',{
                                          'Categorias':Categorias,
                                          'Produtos':Produtos,
-                                          'carrinho': len(request.session['carrinho']),
+                                         'carrinho': len(request.session['carrinho']),
+                                         'avisos':avisos,
                                          })
 
 def categoria(request,id):
@@ -29,8 +31,6 @@ def categoria(request,id):
                                          'Categorias':Categorias,
                                          })
 
-def login(request):
-    return render(request,'login.html')
 
 def produto(request, id):
     if not request.session.get('carrinho'):
@@ -41,8 +41,6 @@ def produto(request, id):
     return render(request, 'produto.html', {'produto': produto,
                                             'carrinho': len(request.session['carrinho']),
                                            })
-
-
 
 def add_carrinho(request):
     if not request.session.get('carrinho'):
@@ -112,8 +110,6 @@ def add_carrinho(request):
 
     return redirect('index')
 
-
-
 def ver_carrinho(request):
     categorias = Categoria.objects.all()
     dados_motrar = []
@@ -135,21 +131,19 @@ def ver_carrinho(request):
                                              'carrinho': len(request.session['carrinho']),
                                              'categorias': categorias
                                              })
+
 def remover_carrinho(request, id):
     request.session['carrinho'].pop(id)
     request.session.save()
     return redirect('/ver_carrinho')
 
-
 def finalizar_pedido(request):
     if request.method == "GET":
         categorias = Categoria.objects.all()
         bairros = Bairro.objects.all()
-        meiosPagamento = MeioPagamento.objects.all()
         total = sum([float(i['preco']) for i in request.session['carrinho']])
         return render(request, 'finalizar_pedido.html', {'carrinho': len(request.session['carrinho']),
                                                          'bairros': bairros,
-                                                         'meiosPagamento':meiosPagamento,
                                                          'categorias': categorias,
                                                          'total': total,
                                                          })
@@ -203,13 +197,15 @@ def finalizar_pedido(request):
                 ) for v in listaCarrinho
 
             )
-
+            avisos =Aviso.objects.all().filter(ativo=True).filter(para = '2')
             request.session['carrinho'].clear()
             request.session.save()
-            return render(request, 'pedido_realizado.html')
+            return render(request, 'pedido_realizado.html',{
+                'avisos':avisos
+            })
         else:
             messages.add_message(request, constants.ERROR, 'Escolha ao menos um produto antes de efetuar a compra!')
-            return redirect('/pedidofinalizar_pedido/')
+            return redirect('/finalizar_pedido/')
 
 def validaCupom(request):
     cupom = request.POST.get('cupom')

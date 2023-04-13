@@ -13,12 +13,39 @@
 				<div class="block menu1">
 					<div class="buttons-container"> 
 						{% for categoria in Categorias %}
+				
 						<a href="{% url 'categoria' categoria.id %}" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
+					
 						{% endfor %}
 					</div>
 					<!-- Start for  Menu -->
 					{% for categoria in Categorias %}
-					
+
+					{% if forloop.first %}
+					<div class="menu menu--is-visible" id="{{categoria}}" data-aos="fade-up">
+						{% for produto in Produtos %}
+						{% if produto.categoria.id == categoria.id %}
+						<div class="item row align-items-center">
+							<div class="col-sm-3 pr-5">
+								<img class="product-img" src="/media/{{produto.img}}">
+							</div>
+							<div class="details col-sm-9">
+								<div class="item__header">
+									<h3 class="item__title">{{produto}}</h3>
+									<span class="item__dots"></span>
+									<span class="item__price">${{produto.preco|floatformat}}</span>
+								</div>
+								<p class="item__description">{{produto.descricao}}</p>
+								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
+								<a href="{% url 'produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
+									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
+									data-image="/media/{{produto.img}}">Ver Produto</a>
+							</div>
+						</div>
+						{% endif %}
+						{% endfor %}
+					</div>
+					{% endif %}
 					<div class="menu" id="{{categoria}}" data-aos="fade-up">
 						{% for produto in Produtos %}
 						{% if produto.categoria.id == categoria.id %}

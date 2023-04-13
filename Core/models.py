@@ -48,12 +48,7 @@ class Bairro(models.Model):
 
     def __str__(self):
         return self.Nome
-    
-class MeioPagamento(models.Model):
-    Meio = models.CharField(max_length=100)
-    def __str__(self) -> str:
-        return self.Meio
-
+   
 class CupomDesconto(models.Model):
     codigo = models.CharField(max_length=8, unique=True)
     desconto = models.FloatField()
@@ -62,7 +57,6 @@ class CupomDesconto(models.Model):
 
     def __str__(self):
         return self.codigo
-
 
 class Pedido(models.Model):
     usuario = models.CharField(max_length=200)
@@ -82,7 +76,6 @@ class Pedido(models.Model):
     def __str__(self):
         return self.usuario
 
-
 class ItemPedido(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
@@ -90,3 +83,21 @@ class ItemPedido(models.Model):
     preco = models.FloatField()
     descricao = models.TextField()
     adicionais = models.TextField()
+
+class Aviso(models.Model):
+    PAGINAS = (
+        ('1','Pagina Inicial'),
+        ('2','Pagina de Obrigado')
+    )
+    MESSAGE_TAGS =(
+        ('alert-success','Sucesso'),
+        ('alert-info','Informativo'),
+        ('alert-warning','Aviso'),
+    )
+    mensagem = models.TextField()
+    para = models.CharField(max_length=1, choices=PAGINAS,default='1')
+    ativo = models.BooleanField(default=True)
+    tag = models.CharField(max_length=50,choices=MESSAGE_TAGS, default='alert-info')
+
+    def __str__(self) -> str:
+        return self.mensagem
