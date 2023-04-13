@@ -26,11 +26,14 @@
     <h1 class="titulo subTituloProduto">Ingredientes: </h1>
     <h3 style="color: gray;">{{produto.ingredientes}}</h3>
 
-    <h1 class="titulo subTituloProduto">Adicionais: </h1>
+   
 
     <form method="POST" action="{% url 'add_carrinho' %}">{% csrf_token %}
     <input name="id" style="display: none;" type="text" value="{{produto.id}}">
+    {% if produto.adicionais %}
+    
     {% for i in produto.adicionais.all %}
+    <h1 class="titulo subTituloProduto">Adicionais: </h1>
     <h1>{{i}}</h1>
     <p>Escolha no mínimo {{i.minimo}} e no máximo {{i.maximo}} {{i}}</p>
         {%for j in i.opcoes.all%}
@@ -43,6 +46,9 @@
             {%endif%}
         {%endfor%}
     {% endfor %}
+    {% elif produto.adicionais  %}
+    <h1>Sem adicional</h1>
+    {% endif %}
     <h1 class="titulo subTituloProduto">Observações: </h1>
     <input name="observacoes" class="observacoes" type="text">
 
@@ -50,7 +56,7 @@
     <input name="quantidade" class="observacoes" type="number"  min="1" max="200" value="1">
 
     <h1 class="titulo subTituloProduto">Preço: </h1>
-    <h3>R${{produto.preco}} Unidade</h3>
+    <h3>R${{produto.preco|floatformat}} Unidade</h3>
 
     <input class="botao" type="submit" value="Adicionar carrinho">
 </form>
