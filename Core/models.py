@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.utils.safestring import mark_safe
 
+
 class Categoria(models.Model):
     categoria = models.CharField(max_length=200)
 
@@ -72,6 +73,7 @@ class Pedido(models.Model):
     bairro = models.CharField(max_length=200, blank=True)
     telefone = models.CharField(max_length=30)
     entregue = models.BooleanField(default=False)
+    
 
     def __str__(self):
         return self.usuario

@@ -121,3 +121,9 @@ a.active.selector-chooseall:hover,
 a.active.selector-clearall:hover {
     color: var(--cor-secundaria) !important;
 }
+
+
+.signals {
+    display: inline;
+    color: red;
+}
