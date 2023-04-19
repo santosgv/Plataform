@@ -181,7 +181,7 @@ def finalizar_pedido(request):
                             cep=x['cep'],
                             rua=x['rua'],
                             numero=x['numero'],
-                            bairro=x['bairro'],
+                            bairro=x['inputbairro'],
                             telefone=x['telefone'],
                             )
             pedido.save()
@@ -222,3 +222,11 @@ def validaCupom(request):
         return HttpResponse(data_json)
     else:
         return HttpResponse(json.dumps({'status': 1}))
+    
+def freteBairro(request):
+    id_bairro = request.POST.get('bairro')
+    bairro = Bairro.objects.get(id=id_bairro)
+    data_json =json.dumps({'status': 0,
+                                    'frete': bairro.Frete,
+                                    })
+    return HttpResponse(data_json)
