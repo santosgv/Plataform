@@ -2,6 +2,9 @@ from django.db import models
 from datetime import datetime
 from django.utils.safestring import mark_safe
 
+class Logo(models.Model):
+    logo = models.ImageField(upload_to='logos_img',blank=True, null=True)
+    backgroud = models.ImageField(upload_to='logos_img',blank=True, null=True)
 
 class Categoria(models.Model):
     categoria = models.CharField(max_length=200)

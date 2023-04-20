@@ -35,11 +35,13 @@
 #header {
     background: var(--cor-primaria);
     color: var(--cor-texto);
+   
 }
 
 #user-tools a:focus, #user-tools a:hover {
     border-bottom-color: #FFFFFF;
     color: #FFFFFF;
+    
 }
 
 a:link, a:visited {
@@ -120,10 +122,4 @@ a.active.selector-clearall:focus,
 a.active.selector-chooseall:hover,
 a.active.selector-clearall:hover {
     color: var(--cor-secundaria) !important;
-}
-
-
-.signals {
-    display: inline;
-    color: red;
 }

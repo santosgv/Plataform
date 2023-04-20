@@ -1,7 +1,7 @@
 import json
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
-from .models import Adicional, CupomDesconto, ItemPedido, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
+from django.shortcuts import get_object_or_404, redirect, render
+from .models import Adicional, CupomDesconto, ItemPedido, Logo, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
 from django.contrib import messages
 from django.contrib.messages import constants
 
@@ -230,3 +230,11 @@ def freteBairro(request):
                                     'frete': bairro.Frete,
                                     })
     return HttpResponse(data_json)
+
+def order_base(request):
+    imagens = Logo.objects.all()
+    for i in imagens.logo:
+        print(i,'akii')
+    return render(request,'outra.html',{
+                                        'imagens':imagens
+                                         })
