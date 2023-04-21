@@ -232,6 +232,3 @@ def freteBairro(request):
                                     })
     return HttpResponse(data_json)
 
-def minha_view(request):
-    ultima_receita = Logo.objects.last()
-    return render(request, 'base.html', {'ultima_receita': ultima_receita})
