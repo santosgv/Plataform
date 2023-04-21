@@ -15,7 +15,7 @@ urlpatterns = [
     path("finalizar_pedido/", views.finalizar_pedido, name='finalizar_pedido'),
     path("validaCupom/", views.validaCupom, name='validaCupom'),
     path("freteBairro/", views.freteBairro, name='freteBairro'),
-    path("order_base/", views.order_base, name='order_base'),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

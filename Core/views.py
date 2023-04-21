@@ -231,10 +231,3 @@ def freteBairro(request):
                                     })
     return HttpResponse(data_json)
 
-def order_base(request):
-    imagens = Logo.objects.all()
-    for i in imagens.logo:
-        print(i,'akii')
-    return render(request,'outra.html',{
-                                        'imagens':imagens
-                                         })
