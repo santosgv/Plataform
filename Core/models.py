@@ -73,7 +73,8 @@ class Pedido(models.Model):
     cep = models.CharField(max_length=50, blank=True)
     rua = models.CharField(max_length=200)
     numero = models.CharField(max_length=10)
-    bairro = models.CharField(max_length=200, blank=True)
+    bairro = models.ForeignKey(Bairro, blank=True, null=True,on_delete=models.DO_NOTHING)
+    frete = models.FloatField(blank=True, max_length=20, null=True)
     telefone = models.CharField(max_length=30)
     entregue = models.BooleanField(default=False)
     

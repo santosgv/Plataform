@@ -1,7 +1,7 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Adicional, CupomDesconto, ItemPedido, Logo, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
+from .models import Adicional, CupomDesconto, ItemPedido, Logo, Opcao, Pedido, Produto,Categoria , Bairro, Aviso,Logo
 from django.contrib import messages
 from django.contrib.messages import constants
 
@@ -176,12 +176,13 @@ def finalizar_pedido(request):
                             total=total,
                             troco=lambda_func_troco(x),
                             cupom=cupom_salvar,
+                            frete=x['frete'],
                             pagamento=lambda_func_pagamento(x),
                             ponto_referencia=x['pt_referencia'],
                             cep=x['cep'],
                             rua=x['rua'],
                             numero=x['numero'],
-                            bairro=x['inputbairro'],
+                            bairro=Bairro.objects.get(id=x['bairro']) ,
                             telefone=x['telefone'],
                             )
             pedido.save()
@@ -231,3 +232,6 @@ def freteBairro(request):
                                     })
     return HttpResponse(data_json)
 
+def minha_view(request):
+    ultima_receita = Logo.objects.last()
+    return render(request, 'base.html', {'ultima_receita': ultima_receita})

@@ -1,12 +1,12 @@
 :root{
-    --cor-primaria:  rgb(242, 179, 179);   
-    --cor-secundaria: rgb(2, 18, 2);
-    --cor-terciaria: red;
-    --cor-destaque: red;
-    --cor-fundo: red;
+    --cor-primaria: #FF7F50;   
+    --cor-secundaria:#696969;
+    --cor-terciaria: rgb(72, 255, 0);
+    --cor-destaque: rgb(255, 153, 0);
+    --cor-fundo: rgb(236, 90, 90);
     --cor-texto: #FFFFFF;
-    --cor-texto-secundaria: red;
-    --cor-borda: red;
+    --cor-texto-secundaria: #ff0000;
+    --cor-borda: #FFDEAD; 
     --cor-sucesso: red;
     --cor-erro: red;
     --cor-alerta: red;

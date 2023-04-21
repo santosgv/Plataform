@@ -156,7 +156,8 @@
     <div class="col-sm fundo">
         <h1 id="total">Total: R$ {{total}}0</h1>
         <p id="msg_frete"></p>
-        <h1 id="frete">Frete : {{Bairro}}0</h1>
+        <h1 id="frete_msg">Frete : {{Bairro}}0</h1>
+        <input id="frete" type="text" style="display: none;" name="frete" value="{{Bairro}}0">
     </div>
 
     <div class="col-sm fundo">
@@ -181,7 +182,7 @@
 
     <div id="troco">
         <h3 class="rosa">troco para</h3>
-        <input type="text" class="form-control" data-mask='000.000.000.000.000,00' data-mask-reverse="true" placeholder="ex.:10" name="troco_para">
+        <input type="text" class="form-control"  placeholder="ex.:10" name="troco_para">
     </div>
     <br>
     <button onclick="envia()" class="btn btn-success btn-lg">Efetuar pedido!</button>
@@ -236,10 +237,12 @@ function validaCupom(){
                 },
                 success: function(resposta){
                   resposta = JSON.parse(resposta)
+                  frete_msg = document.getElementById('frete_msg')
                   div_frete = document.getElementById('frete')
                   msg = document.getElementById('msg_frete')
                   if(resposta['status'] == 0){
-                    div_frete.innerHTML = 'Frete Por R$' +' '+resposta['frete']
+                    div_frete.value = resposta['frete']
+                    frete_msg.innerHTML = 'Frete Por R$' +' '+resposta['frete']
                     msg.innerHTML = "O valor de Frete para essa Localidade"
                     msg.style.color = 'red'
                     msg.style.fontSize ='24px'

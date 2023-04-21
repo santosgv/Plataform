@@ -30,7 +30,7 @@ class PedidoAdmin(admin.ModelAdmin):
     ]
     list_display = ('id','usuario', 'total','data','entregue',)
     search_fields = ('entregue',)
-    readonly_fields = ('usuario', 'total', 'troco', 'pagamento', 'ponto_referencia', 'data', 'cep', 'rua', 'numero', 'bairro', 'telefone')
+    readonly_fields = ('usuario', 'total','cupom','frete', 'troco', 'pagamento', 'ponto_referencia', 'data', 'cep', 'rua', 'numero', 'bairro', 'telefone')
     list_filter = ('entregue','data',)
 
 admin.site.register(Pedido, PedidoAdmin)

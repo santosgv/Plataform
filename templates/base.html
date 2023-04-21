@@ -44,7 +44,9 @@
 			<a href="{% url 'index' %}" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
 				data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">View Today's Menu</a>
 		</div>
-		<div class="clearfix"></div>
+		<div class="clearfix">
+            {% include 'outra.html' %}
+        </div>
 	</div>
     <div class="text-center" role="alert">
         {% if avisos %}
