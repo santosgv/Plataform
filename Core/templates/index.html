@@ -14,7 +14,7 @@
 					<div class="buttons-container"> 
 						{% for categoria in Categorias %}
 				
-						<a href="{% url 'categoria' categoria.id %}" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
+						<a href="{% url 'Core:categoria' categoria.id %}" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
 					
 						{% endfor %}
 					</div>
@@ -37,7 +37,7 @@
 								</div>
 								<p class="item__description">{{produto.descricao}}</p>
 								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
-								<a href="{% url 'produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
+								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
 									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
 									data-image="/media/{{produto.img}}">Ver Produto</a>
 							</div>
@@ -61,7 +61,7 @@
 								</div>
 								<p class="item__description">{{produto.descricao}}</p>
 								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
-								<a href="{% url 'produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
+								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
 									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
 									data-image="/media/{{produto.img}}">Ver Produto</a>
 							</div>

@@ -29,14 +29,18 @@
         <td>{{i.quantidade}}</td>
         <td>{{i.observacoes}}</td>
         <td>R${{i.preco}}0</td>
-        <td><a href="{% url 'remover_carrinho' j%}" class="btn btn-danger">Remover</a></td>
+        <td><a href="{% url 'Core:remover_carrinho' j%}" class="btn btn-danger">Remover</a></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   <h1 class="titulo">Total: </h1>
   <h2 style="color: gray;">&nbsp R${{total}}0</h2>
-  <a href="{% url 'finalizar_pedido' %}" class="btn btn-success">Finalizar compra</a>
-  <a href="{% url 'index'%}" class="btn btn-primary">Continuar comprando</a>
+  {% if carrinho == 0 %}
+  <a href="{% url 'Core:finalizar_pedido' %}" class="btn btn-success disabled">Finalizar compra</a>
+  {% elif carrinho != 0 %}
+  <a href="{% url 'Core:finalizar_pedido' %}" class="btn btn-success">Finalizar compra</a>
+  {% endif %}
+  <a href="{% url 'Core:index'%}" class="btn btn-primary">Continuar comprando</a>
 </div>
 {%endblock%}

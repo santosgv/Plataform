@@ -108,7 +108,7 @@ def add_carrinho(request):
     request.session['carrinho'].append(data)
     request.session.save()
 
-    return redirect('index')
+    return redirect('Core:index')
 
 def ver_carrinho(request):
     categorias = Categoria.objects.all()

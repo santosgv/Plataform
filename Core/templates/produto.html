@@ -31,7 +31,7 @@
 
    
 
-    <form method="POST" action="{% url 'add_carrinho' %}">{% csrf_token %}
+    <form method="POST" action="{% url 'Core:add_carrinho' %}">{% csrf_token %}
     <input name="id" style="display: none;" type="text" value="{{produto.id}}">
     {% if produto.adicionais %}
     
