@@ -5,6 +5,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+app_name ='Core'
+
 urlpatterns = [
     path("", views.index, name='index'),
     path("categoria/<int:id>", views.categoria , name='categoria'),
