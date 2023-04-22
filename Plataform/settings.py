@@ -61,8 +61,8 @@ INSTALLED_APPS = list(SHARED_APPS) + [
 
 MIDDLEWARE = [
     'django_tenants.middleware.main.TenantMainMiddleware',
-    'Plataform.middleware.TenantMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
+    #'Plataform.middleware.TenantMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -103,7 +103,7 @@ WSGI_APPLICATION = 'Plataform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME': 'aplicacao',
+        'NAME': 'Aplication',
         'USER': 'postgres',
         'PASSWORD': 'root',
         'HOST': 'localhost',
