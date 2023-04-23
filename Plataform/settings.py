@@ -32,7 +32,7 @@ INSTALLED_APPS = [
 
 SHARED_APPS = [
     'django_tenants',  
-    'tenant',
+    'Cliente',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -116,9 +116,11 @@ DATABASE_ROUTERS = (
     'django_tenants.routers.TenantSyncRouter',
  )
 
-TENANT_MODEL = "tenant.Tenant"
+TENANT_MODEL = "Cliente.Cliente"
 
-TENANT_DOMAIN_MODEL = "tenant.Domain"
+TENANT_DOMAIN_MODEL = "Cliente.Domain"
+
+TENANT_COLOR_ADMIN_APPS = False
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

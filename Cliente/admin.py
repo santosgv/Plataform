@@ -2,7 +2,7 @@ from django.contrib import admin
 from django_tenants.admin import TenantAdminMixin
 from django_tenants.utils import get_public_schema_name
 
-from .models import Domain, Tenant
+from .models import Domain, Cliente
 
 class PublicTenantOnlyMixin:
         """Allow Access to Public Tenant Only."""
@@ -30,10 +30,10 @@ class DomainInline(PublicTenantOnlyMixin,admin.TabularInline):
     model = Domain
     max_num = 1
 
-@admin.register(Tenant)
+@admin.register(Cliente)
 class TenantAdmin(PublicTenantOnlyMixin,TenantAdminMixin, admin.ModelAdmin):
         list_display = (
-        "user",
+        "nome",
         "is_active",
         "created_on",
         )
