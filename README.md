@@ -1,14 +1,15 @@
 # Plataform
  Plataform with Django SaaS
 
-# run o Tenent
+# run the migrations
 ~~~linux
 python manage.py makemigrations
+~~~
 # You may need to run migrations for specific app
 ~~~linux
 python manage.py makemigrations Core
-# Apply migrations
 ~~~
+# Apply migrations
 ~~~linux
 python manage.py migrate_schemas
 ~~~
