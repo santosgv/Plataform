@@ -2,9 +2,14 @@ from django.db import models
 from datetime import datetime
 from django.utils.safestring import mark_safe
 
-class Logo(models.Model):
-    logo = models.ImageField(upload_to='logos_img',blank=True, null=True)
-    backgroud = models.ImageField(upload_to='logos_img',blank=True, null=True)
+class ImagensTexto(models.Model):
+    logo = models.ImageField(upload_to='logos_img')
+    backgroud = models.ImageField(upload_to='logos_img')
+    nome_Loja = models.CharField(max_length=100 )
+    texto = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.nome_Loja
 
 class Categoria(models.Model):
     categoria = models.CharField(max_length=200)
@@ -19,7 +24,7 @@ class Opcao(models.Model):
     def __str__(self):
         return self.nome
 
-class Adicional(models.Model):
+class Adicionai(models.Model):
     nome = models.CharField(max_length=100, unique=True)
     maximo = models.IntegerField()
     minimo = models.IntegerField()
@@ -35,7 +40,7 @@ class Produto(models.Model):
     preco = models.FloatField()
     descricao = models.TextField()
     ingredientes = models.CharField(max_length=2000)
-    adicionais = models.ManyToManyField(Adicional, blank=True)
+    adicionais = models.ManyToManyField(Adicionai, blank=True)
     ativo = models.BooleanField(default=True)
 
     @mark_safe
@@ -107,3 +112,4 @@ class Aviso(models.Model):
 
     def __str__(self) -> str:
         return self.mensagem
+

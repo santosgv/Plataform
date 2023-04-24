@@ -7165,7 +7165,12 @@ a.text-beige:hover, a.text-beige:focus {
   padding: 10px 10px;
   cursor: pointer; }
 
+  .name_footer {
+    color: var(--primary);
+  }
+
 .footer1 {
+  font-size: 18px;
   padding: 30px 0;
   margin-left: 30px;
   margin-right: 30px; }

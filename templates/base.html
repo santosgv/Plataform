@@ -18,8 +18,9 @@
 			{% block 'head' %}
 			{% endblock %}
     </head>
-   
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="{% static 'img/logo.png' %}" style="height: 80px;"></a>
+    {% if imagens %}
+    {% for img in imagens %}
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="/media/{{ img.logo }}" style="height: 80px;"></a>
         <button
         class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
@@ -33,21 +34,49 @@
                 </ul> 
             </div>
     </nav>
+    
     <body>
         <div class="block hero1 my-auto"
-		style="background-image:url(https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80);">
-		<div class="container-fluid text-center">
-			<h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="0">Bistrot
-				Français</h1>
-			<p class="lead text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">We are closed
-				for the moment, but we will still deliver food at your place!</p>
-			<a href="{% url 'Core:index' %}" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
-				data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">View Today's Menu</a>
-		</div>
-		<div class="clearfix">
-           
+style="background-image:url(/media/{{ img.backgroud }});">
+<div class="container-fluid text-center">
+	<h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="0">{{img.nome_Loja}}</h1>
+	<p class="lead text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">{{img.texto}}</p>
+	<a href="{% url 'Core:index' %}" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
+		data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">Ver o Menu de Hoje</a>
+</div>
+</div>
+{% endfor%}
+
+{% else %}
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="{% static 'img/logo.png' %}" style="height: 80px;"></a>
+    <button
+    class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> <a class="nav-link" href="{% url 'Core:index' %}">Bem Vindo<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/">Area Adiministrativa</a>
+                </li>
+            </ul> 
         </div>
-	</div>
+</nav>
+<div class="block hero1 my-auto"
+style="background-image:url(https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80););">
+<div class="container-fluid text-center">
+	<h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="0">FoodSophee</h1>
+	<p class="lead text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">We are closed
+		for the moment, but we will still deliver food at your place!</p>
+	<a href="{% url 'Core:index' %}" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
+		data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">Ver o Menu de Hoje</a>
+</div>
+</div>
+{% endif %}
+<div class="clearfix">
+   
+</div>
+
     <div class="text-center" role="alert">
         {% if avisos %}
         {% for aviso in avisos%}
@@ -66,9 +95,9 @@
 		<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
 	  </svg></a>
 	<footer class="block footer1 footer text-center">
-		<p>&copy; <a href="https://bootstrapstarter.com/bootstrap-templates/template-fooddelivery-bootstrap-html/">"Food
-				Delivery HTML Template"</a> by
+		<p>&copy; Copyright 2023 <sapn class="name_footer">"FoodShopee" </sapn>Todos os direitos reservados by
 			Vitor</p>
+            <a target="_blank" href="https://transparencyreport.google.com/safe-browsing/search?url=foodshopee.com.br"><img src="{% static 'img/google-safe-browsing-1.png' %}" alt=""></a>
 	</footer>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
