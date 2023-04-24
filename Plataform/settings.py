@@ -61,7 +61,8 @@ INSTALLED_APPS = list(SHARED_APPS) + [
 
 MIDDLEWARE = [
     'django_tenants.middleware.main.TenantMainMiddleware',
-    #'Plataform.middleware.TenantMiddleware',
+    'Plataform.middleware.TenantActiveMiddleware',
+    #'Plataform.middleware.RemoveWWWMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
