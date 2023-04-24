@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Aviso, Categoria, CupomDesconto, ItemPedido, Logo, Pedido, Produto, Adicional, Opcao,Bairro
+from .models import Aviso, Categoria, CupomDesconto, ItemPedido, ImagensTexto, Pedido, Produto, Adicionai, Opcao,Bairro
 
 
 
@@ -36,11 +36,11 @@ class PedidoAdmin(admin.ModelAdmin):
 admin.site.register(Pedido, PedidoAdmin)
 
 admin.site.register(Categoria)
-admin.site.register(Adicional)
+admin.site.register(Adicionai)
 admin.site.register(Opcao)
 admin.site.register(Bairro)
 admin.site.register(Aviso)
-admin.site.register(Logo)
+admin.site.register(ImagensTexto)
 
 
 

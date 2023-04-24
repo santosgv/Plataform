@@ -96,7 +96,6 @@
           <br>
           <h3 class="rosa">Cep<span class="importante">*</span>:</h3>
           <input type="text" class="form-control" required="required" data-mask='00000-000' id="cep" placeholder="CEP" name="cep">
-
           <br>
           <!-- <h3 class="rosa">Cidade*:</h3>
           <select class="form-control">
@@ -105,7 +104,6 @@
               <option >Ribeirao das Neves</option>
           </select>
         -->
-     
           <h3 class="rosa">Rua<span class="importante">*</span>:</h3>
           <input type="text" required="required" class="form-control" placeholder="Rua" id="rua" name="rua">
 
@@ -116,9 +114,8 @@
           <br>
           <h3 class="rosa">Bairro<span class="importante">*</span>:</h3>
           <select class="form-control" required="required" class="form-control" placeholder="Bairro" id="inputbairro" name="bairro" onchange="freteBairro()">
-            <option selected>Escolha Sua Bairro...</option>
             {% for bairro in bairros %}
-              <option value="{{bairro.id}}" >{{bairro}}</option>
+              <option value="{{bairro.id}}" selected>{{bairro}}</option>
               {% endfor%}
           </select>
           
