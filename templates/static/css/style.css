@@ -167,6 +167,17 @@ img {
   vertical-align: middle;
   border-style: none; }
 
+  .loja_fechada {
+    display: block;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    padding: 10px 10px 10px 65px;
+    margin: 0 0 10px 0;
+    background-size: 16px auto;
+    color: red;
+    word-break: break-word;
+}
+
 svg {
   overflow: hidden;
   vertical-align: middle; }
