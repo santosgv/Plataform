@@ -6,6 +6,7 @@ from Cliente.models import Cliente
 
 
 def desativar_cliente():
+    print('chamou a funcao')
     clientes = Cliente.objects.filter(is_active=True, pago_ate__lte=timezone.now())
     for cliente in clientes:
         cliente.is_active = False
@@ -13,6 +14,7 @@ def desativar_cliente():
 
 
 scheduler = BackgroundScheduler()
+print('chamou o agendamento')
 scheduler.add_jobstore(DjangoJobStore(), "default")
 scheduler.add_job(
     desativar_cliente,

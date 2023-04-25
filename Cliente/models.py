@@ -7,7 +7,7 @@ from django.utils import timezone
 class Cliente(TenantMixin):
     Usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     nome = models.CharField(max_length=100)
-    pago_ate = models.DateField(default=now)
+    pago_ate = models.DateField(default=timezone.now().date())
     on_trial = models.BooleanField(default=True, blank=True)
     descricao = models.TextField(blank=True)
 

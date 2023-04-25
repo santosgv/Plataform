@@ -13,8 +13,13 @@ SECRET_KEY =config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=True, cast=bool)
 
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25
+
 
 ALLOWED_HOSTS = []
+
+SCHEDULER_AUTOSTART=True
 
 
 # Application definition
@@ -41,6 +46,7 @@ SHARED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'django_apscheduler',
     'Core', 
 ]
 
@@ -52,7 +58,7 @@ TENANT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'corsheaders',
-
+    'django_apscheduler',
     # tenant-specific apps
      'Core',
 ]
@@ -198,3 +204,13 @@ EMAIL_PORT =587
 EMAIL_HOST='smtp.gmail.com'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# celery
+
+BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/Sao_Paulo'
