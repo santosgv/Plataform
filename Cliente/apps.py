@@ -8,4 +8,4 @@ class ClienteConfig(AppConfig):
     def ready(self):
         from django.db.models.signals import pre_save
         from .models import Cliente
-        from .signals import created_user_client
+        from .signals import created_user_client,desativar_cliente

@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth.models import User
 from django_tenants.models import DomainMixin, TenantMixin
-
+from django.utils import timezone
 
 class Cliente(TenantMixin):
     Usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -31,6 +31,9 @@ class Cliente(TenantMixin):
 
     def __str__(self):
         return f"{self.nome}"
+
+    def is_active_now(self):
+        return self.pago_ate > timezone.now().date()
 
 
 class Domain(DomainMixin):

@@ -1,6 +1,9 @@
 from django.dispatch import receiver
 from django_tenants.signals import  post_schema_sync
+from django.db.models.signals import pre_save
 from django_tenants.models import TenantMixin
+from django.utils import timezone
+from .models import Cliente
 from django_tenants.utils import tenant_context
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -27,3 +30,8 @@ def created_user_client(sender, **kwargs):
         from_email = config('EMAIL_HOST_USER')
         recipient_list = [config('recipient_list')]
         #send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+
+@receiver(pre_save, sender=Cliente)
+def desativar_cliente(sender, instance, **kwargs):
+    if not instance.is_active_now():
+        instance.is_active = False
