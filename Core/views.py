@@ -1,16 +1,18 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Adicionai, CupomDesconto, ItemPedido, ImagensTexto, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
+from django.urls import reverse
+from .models import Adicional, CupomDesconto, ItemPedido, Loja, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
 from django.contrib import messages
 from django.contrib.messages import constants
+from .admin import my_admin_site
 
 def index(request):
     if not request.session.get('carrinho'):
         request.session['carrinho'] = []
         request.session.save()
     Categorias = Categoria.objects.all()
-    imagens = ImagensTexto.objects.all()[:1]
+    imagens = Loja.objects.first()
     Produtos = Produto.objects.all().filter(ativo=True)
     avisos =Aviso.objects.all().filter(ativo=True).filter(para = '1')
     return render(request,'index.html',{
@@ -39,7 +41,7 @@ def produto(request, id):
         request.session.save()
         
     produto = Produto.objects.filter(id=id)[0]
-    imagens = ImagensTexto.objects.all()[:1]
+    imagens = Loja.objects.first()
     return render(request, 'produto.html', {'produto': produto,
                                             'imagens':imagens,
                                             'carrinho': len(request.session['carrinho']),
@@ -66,7 +68,7 @@ def add_carrinho(request):
 
     id = int(x['id'][0])
     preco_total = Produto.objects.filter(id=id)[0].preco
-    adicionais_verifica = Adicionai.objects.filter(produto=id)
+    adicionais_verifica = Adicional.objects.filter(produto=id)
     aprovado = True
 
     for i in adicionais_verifica:
@@ -115,7 +117,7 @@ def add_carrinho(request):
 
 def ver_carrinho(request):
     categorias = Categoria.objects.all()
-    imagens = ImagensTexto.objects.all()[:1]
+    imagens = Loja.objects.first()
     dados_motrar = []
     for i in request.session['carrinho']:
         prod = Produto.objects.filter(id=i['id_produto'])
@@ -146,7 +148,7 @@ def finalizar_pedido(request):
     if request.method == "GET":
         categorias = Categoria.objects.all()
         bairros = Bairro.objects.all()
-        imagens = ImagensTexto.objects.all()[:1]
+        imagens = Loja.objects.first()
         total = sum([float(i['preco']) for i in request.session['carrinho']])
         return render(request, 'finalizar_pedido.html', {'carrinho': len(request.session['carrinho']),
                                                          'imagens':imagens,

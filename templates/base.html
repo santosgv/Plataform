@@ -19,8 +19,9 @@
 			{% endblock %}
     </head>
     {% if imagens %}
-    {% for img in imagens %}
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="/media/{{ img.logo }}" style="height: 80px;"></a>
+    <div>
+    </div>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="/media/{{ imagens.logo }}" style="height: 80px;"></a>
         <button
         class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
@@ -33,20 +34,23 @@
                     </li>
                 </ul> 
             </div>
+            {% if imagens.aberta != True %}
+            <div class="loja_fechada">
+                A loja está fechada no momento.
+            </div>
+           {% endif %}
     </nav>
     
     <body>
         <div class="block hero1 my-auto"
-style="background-image:url(/media/{{ img.backgroud }});">
+style="background-image:url(/media/{{ imagens.backgroud }});">
 <div class="container-fluid text-center">
-	<h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="0">{{img.nome_Loja}}</h1>
-	<p class="lead text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">{{img.texto}}</p>
+	<h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="0">{{imagens.nome_Loja}}</h1>
+	<p class="lead text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">{{imagens.texto}}</p>
 	<a href="{% url 'Core:index' %}" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
 		data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">Ver o Menu de Hoje</a>
 </div>
 </div>
-{% endfor%}
-
 {% else %}
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="{% static 'img/logo.png' %}" style="height: 80px;"></a>
     <button
@@ -106,5 +110,12 @@ style="background-image:url(https://images.unsplash.com/photo-1514933651103-005e
 		<script src="{% static 'js/mycart.js' %}"></script>
 		<script src="{% static 'js/mycart-custom.js' %}"></script>
 	<script src="{% static 'js/custom-general.js' %}"></script>
+
+    
+      
+      
+      
+      
+      
   
 </html>
