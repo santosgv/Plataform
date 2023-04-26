@@ -5,7 +5,7 @@ from django.urls import reverse
 from .models import Adicional, CupomDesconto, ItemPedido, Loja, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
 from django.contrib import messages
 from django.contrib.messages import constants
-from .admin import my_admin_site
+from .tasks import minha_tarefa
 
 def index(request):
     if not request.session.get('carrinho'):
@@ -15,6 +15,7 @@ def index(request):
     imagens = Loja.objects.first()
     Produtos = Produto.objects.all().filter(ativo=True)
     avisos =Aviso.objects.all().filter(ativo=True).filter(para = '1')
+    #minha_tarefa.delay()
     return render(request,'index.html',{
                                          'imagens':imagens,
                                          'Categorias':Categorias,
