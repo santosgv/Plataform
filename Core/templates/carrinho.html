@@ -36,7 +36,7 @@
   </table>
   <h1 class="titulo">Total: </h1>
   <h2 style="color: gray;">&nbsp R${{total}}0</h2>
-  {% if carrinho == 0 %}
+  {% if carrinho == 0 or imagens.aberta == False %}
   <a href="{% url 'Core:finalizar_pedido' %}" class="btn btn-success disabled">Finalizar compra</a>
   {% elif carrinho != 0 %}
   <a href="{% url 'Core:finalizar_pedido' %}" class="btn btn-success">Finalizar compra</a>
