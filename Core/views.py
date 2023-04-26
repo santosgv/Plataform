@@ -15,7 +15,7 @@ def index(request):
     imagens = Loja.objects.first()
     Produtos = Produto.objects.all().filter(ativo=True)
     avisos =Aviso.objects.all().filter(ativo=True).filter(para = '1')
-    #minha_tarefa.delay()
+    minha_tarefa.delay()
     return render(request,'index.html',{
                                          'imagens':imagens,
                                          'Categorias':Categorias,
