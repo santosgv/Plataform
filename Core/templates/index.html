@@ -37,7 +37,7 @@
 								</div>
 								<p class="item__description">{{produto.descricao}}</p>
 								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
-								{% if imagens.aberta != True %}
+								{% if imagens.aberta == False %}
 								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn disabled" data-id="{{produto.id}}"
 									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
 									data-image="/media/{{produto.img}}">Loja Fechada</a>
