@@ -146,7 +146,7 @@ def remover_carrinho(request, id):
     request.session.save()
     return redirect('/ver_carrinho')
 
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 def finalizar_pedido(request):
     if request.method == "GET":
         categorias = Categoria.objects.all()
