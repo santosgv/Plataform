@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load cache %}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,6 +18,7 @@
 			{% block 'head' %}
 			{% endblock %}
     </head>
+    {% cache 900 perfil %}
     {% if imagens %}
     <div>
     </div>
@@ -34,11 +35,13 @@
                     </li>
                 </ul> 
             </div>
+            {% cache 120 aberta %}
             {% if imagens.aberta != True %}
             <div class="loja_fechada">
                 A loja está fechada no momento.
             </div>
            {% endif %}
+           {% endcache %}
     </nav>
     
     <body>
@@ -76,11 +79,13 @@ style="background-image:url({% static 'img/uma-vista-frontal.jpg' %});">
 </div>
 </div>
 {% endif %}
+{% endcache %}
 <div class="clearfix">
    
 </div>
 
     <div class="text-center" role="alert">
+      {% cache 120 avisos %}
         {% if avisos %}
         {% for aviso in avisos%}
         <div class="alert {{aviso.tag}}" role="alert">
@@ -89,6 +94,7 @@ style="background-image:url({% static 'img/uma-vista-frontal.jpg' %});">
         {% endfor %}
         {% endif %}
       </div>
+      {% endcache %}
     {% block 'body' %}
     
 	{% endblock %}

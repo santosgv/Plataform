@@ -4,10 +4,12 @@
 {% block 'body' %}
 <div class="alert alert-success text-center" role="alert">
     Seu pedido foi realizado com sucesso
+    {% cache 120 avisos %}
     {% if avisos  %}
     <div class="alert {{avisos.tag}}" role="alert">
         {{aviso}}
     </div>
     {% endif %}
+    {% endcache %}
   </div>
 {%endblock%}

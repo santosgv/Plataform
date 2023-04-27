@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{% load cache %}
 
 {% load static %}
 
@@ -6,11 +7,15 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="{% static 'css/produto.css' %}" />
 {%endblock%}
+{% block 'title' %}
+Produto
+{% endblock %}
 
 {% block 'body'%}
 <div class="product" style="align-items: center; text-align: center;">
     <br>
     <div class="container">
+        {% cache 120 mensagem %}
         {% if messages %}
         {% for mensagem in messages%}
         <div class="alert {{mensagem.tags}}" role="alert">
@@ -18,8 +23,10 @@
         </div>
         {%endfor%}
         {%endif%}
+        {% endcache %}
 
     </div>
+    {% cache 120 produto %}
     <img class="tamanhoImg" style="margin-top: 20px;" src="/media/{{produto.img}}">
 
     <h3  class="titulo tituloProduto">{{produto.nome_produto}}</h3>
@@ -33,6 +40,8 @@
 
     <form method="POST" action="{% url 'Core:add_carrinho' %}">{% csrf_token %}
     <input name="id" style="display: none;" type="text" value="{{produto.id}}">
+
+    {% cache 300 adicional %}
     {% if produto.adicionais %}
     
     {% for i in produto.adicionais.all %}
@@ -52,6 +61,7 @@
     {% elif produto.adicionais  %}
     <h1>Sem adicional</h1>
     {% endif %}
+    {% endcache %}
     <h1 class="titulo subTituloProduto">Observações: </h1>
     <textarea name="observacoes" class="observacoes" type="text"> </textarea>
 
@@ -61,6 +71,7 @@
     <div class='product-item__info'>
     <h1 class="titulo subTituloProduto">Preço: </h1>
     <spam class="preco">R$ {{produto.preco|floatformat}} Unidade</spam>
+    {% endcache %}
     {% if imagens.aberta != True %}
     <button type="submit" type="button" class="btn btn-primary disabled">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">

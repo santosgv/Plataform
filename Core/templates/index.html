@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load cache %}
 
 {% load static %}
 
@@ -12,12 +13,13 @@
 			<section id="menu">
 				<div class="block menu1">
 					<div class="buttons-container"> 
+						{% cache 300 categoria %}
 						{% for categoria in Categorias %}
-				
 						<a href="{% url 'Core:categoria' categoria.id %}" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
-					
 						{% endfor %}
+						{% endcache %}
 					</div>
+					{% cache 300 categoria2 %}
 					<!-- Start for  Menu -->
 					{% for categoria in Categorias %}
 
@@ -76,6 +78,7 @@
 						{% endfor %}
 					</div>
 					{% endfor %}
+					{% endcache %}
 					<!-- End For Menu -->
 				</div>
 				<!-- End block -->
