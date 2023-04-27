@@ -130,6 +130,10 @@ TENANT_DOMAIN_MODEL = "Cliente.Domain"
 
 TENANT_COLOR_ADMIN_APPS = False
 
+
+#limita as chamadas no  search_path
+TENANT_LIMIT_SET_CALLS = True
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -185,6 +189,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
 STATIC_ROOT = os.path.join('static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# separando arquvios storege por inquelino
+DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
 MEDIA_URL = '/media/'
 
 MESSAGE_TAGS = {
