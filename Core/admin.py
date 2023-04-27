@@ -8,12 +8,34 @@ class ProdutoAdmin(admin.ModelAdmin):
     list_display = ('icone', 'nome_produto', 'categoria', 'preco', 'ativo')
     list_editable = ('preco','ativo')
 
+@admin.register(Loja)
+class LojaAdmin(admin.ModelAdmin):
+    list_display=('nome_Loja','aberta','texto')
+    list_editable=('aberta',)
 
+@admin.register(Opcao)
+class OpcaoAdmin(admin.ModelAdmin):
+    list_display=('nome','acrecimo','ativo')
+    list_editable= ('acrecimo','ativo',)
+    list_filter=('nome','ativo')
+
+@admin.register(Bairro)
+class BairroAdmin(admin.ModelAdmin):
+    list_display=('Nome','Frete')
+    list_editable=('Frete',)
+    list_filter=('Nome','Frete')
 
 @admin.register(CupomDesconto)
 class CupomDescontoAdmin(admin.ModelAdmin):
     list_display = ('codigo', 'desconto', 'ativo')
     readonly_fields=('usos',)
+    list_editable= ('ativo',)
+
+
+@admin.register(Adicional)
+class AdicionalAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'maximo', 'minimo','ativo')
+    list_editable=('maximo', 'minimo','ativo')
 
 
 class itemPedidoInline(admin.TabularInline):
@@ -37,11 +59,8 @@ class PedidoAdmin(admin.ModelAdmin):
 admin.site.register(Pedido, PedidoAdmin)
 
 admin.site.register(Categoria)
-admin.site.register(Adicional)
-admin.site.register(Opcao)
-admin.site.register(Bairro)
 admin.site.register(Aviso)
-admin.site.register(Loja)
+
 
 
 

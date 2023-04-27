@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load cache %}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,6 +18,7 @@
 			{% block 'head' %}
 			{% endblock %}
     </head>
+    {% cache 900 perfil %}
     {% if imagens %}
     <div>
     </div>
@@ -34,11 +35,13 @@
                     </li>
                 </ul> 
             </div>
+            {% cache 120 aberta %}
             {% if imagens.aberta != True %}
             <div class="loja_fechada">
                 A loja está fechada no momento.
             </div>
            {% endif %}
+           {% endcache %}
     </nav>
     
     <body>
@@ -67,21 +70,22 @@ style="background-image:url(/media/{{ imagens.backgroud }});">
         </div>
 </nav>
 <div class="block hero1 my-auto"
-style="background-image:url(https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80););">
+style="background-image:url({% static 'img/uma-vista-frontal.jpg' %});">
 <div class="container-fluid text-center">
 	<h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="0">FoodSophee</h1>
-	<p class="lead text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">We are closed
-		for the moment, but we will still deliver food at your place!</p>
+	<p class="lead text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">Leve seu negócio para o próximo nível com nosso sistema de delivery integrado. Com nossa plataforma, você pode gerenciar suas entregas de forma eficiente e oferecer aos seus clientes a comodidade de pedir online. Experimente agora e veja seus negócios decolarem!</p>
 	<a href="{% url 'Core:index' %}" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
 		data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">Ver o Menu de Hoje</a>
 </div>
 </div>
 {% endif %}
+{% endcache %}
 <div class="clearfix">
    
 </div>
 
     <div class="text-center" role="alert">
+      {% cache 120 avisos %}
         {% if avisos %}
         {% for aviso in avisos%}
         <div class="alert {{aviso.tag}}" role="alert">
@@ -90,6 +94,7 @@ style="background-image:url(https://images.unsplash.com/photo-1514933651103-005e
         {% endfor %}
         {% endif %}
       </div>
+      {% endcache %}
     {% block 'body' %}
     
 	{% endblock %}
@@ -97,11 +102,123 @@ style="background-image:url(https://images.unsplash.com/photo-1514933651103-005e
     <a class="nav-item my-cart-icon" href="{%url 'Core:ver_carrinho'%}">{{carrinho}}<svg xmlns="http://www.w3.org/2000/svg"width="1.2em" height="1.2em" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
 		<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
 	  </svg></a>
-	<footer class="block footer1 footer text-center">
-		<p>&copy; Copyright 2023 <sapn class="name_footer">"FoodShopee" </sapn>Todos os direitos reservados by
+	<!-- Footer -->
+<footer class="text-center text-lg-start text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+
+  
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+  
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i> <span class="name_footer">FoodShopee</span>
+            </h6>
+            <p>
+                <a target="_blank" href="https://transparencyreport.google.com/safe-browsing/search?url=foodshopee.com.br"><img src="{% static 'img/google-safe-browsing-1.png' %}" alt=""></a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Products
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Angular</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">React</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Vue</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Laravel</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Pricing</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Settings</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Orders</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              info@example.com
+            </p>
+            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        <p>&copy; Copyright 2023 <sapn class="name_footer">"FoodShopee"</sapn>Todos os direitos reservados by
 			Vitor</p>
-            <a target="_blank" href="https://transparencyreport.google.com/safe-browsing/search?url=foodshopee.com.br"><img src="{% static 'img/google-safe-browsing-1.png' %}" alt=""></a>
-	</footer>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<script>

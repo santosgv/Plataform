@@ -5,7 +5,8 @@ from django.urls import reverse
 from .models import Adicional, CupomDesconto, ItemPedido, Loja, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
 from django.contrib import messages
 from django.contrib.messages import constants
-from .tasks import minha_tarefa
+from django.views.decorators.cache import cache_page
+
 
 def index(request):
     if not request.session.get('carrinho'):
@@ -15,7 +16,6 @@ def index(request):
     imagens = Loja.objects.first()
     Produtos = Produto.objects.all().filter(ativo=True)
     avisos =Aviso.objects.all().filter(ativo=True).filter(para = '1')
-    minha_tarefa.delay()
     return render(request,'index.html',{
                                          'imagens':imagens,
                                          'Categorias':Categorias,
@@ -24,6 +24,7 @@ def index(request):
                                          'avisos':avisos,
                                          })
 
+@cache_page(60 * 15)
 def categoria(request,id):
     if not request.session.get('carrinho'):
         request.session['carrinho'] = []
@@ -145,6 +146,7 @@ def remover_carrinho(request, id):
     request.session.save()
     return redirect('/ver_carrinho')
 
+@cache_page(60 * 15)
 def finalizar_pedido(request):
     if request.method == "GET":
         categorias = Categoria.objects.all()
@@ -218,6 +220,7 @@ def finalizar_pedido(request):
             messages.add_message(request, constants.ERROR, 'Escolha ao menos um produto antes de efetuar a compra!')
             return redirect('/finalizar_pedido/')
 
+@cache_page(60 * 15)
 def validaCupom(request):
     cupom = request.POST.get('cupom')
     cupom = CupomDesconto.objects.filter(codigo = cupom)
@@ -233,7 +236,8 @@ def validaCupom(request):
         return HttpResponse(data_json)
     else:
         return HttpResponse(json.dumps({'status': 1}))
-    
+
+@cache_page(60 * 15)
 def freteBairro(request):
     id_bairro = request.POST.get('bairro')
     bairro = Bairro.objects.get(id=id_bairro)
