@@ -13,13 +13,13 @@
 			<section id="menu">
 				<div class="block menu1">
 					<div class="buttons-container"> 
-						{% cache 300 categoria %}
+						{% cache 180 categoria %}
 						{% for categoria in Categorias %}
 						<a href="{% url 'Core:categoria' categoria.id %}" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
 						{% endfor %}
 						{% endcache %}
 					</div>
-					<!-- {% cache 300 categoria2 %}  -->
+					{% cache 180 cardapio %}
 					<!-- Start for  Menu -->
 					{% for categoria in Categorias %}
 
@@ -78,7 +78,7 @@
 						{% endfor %}
 					</div>
 					{% endfor %} 
-				<!--	{% endcache %}  -->
+					{% endcache%}
 					<!-- End For Menu -->
 				</div>
 				<!-- End block -->

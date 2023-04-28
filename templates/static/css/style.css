@@ -7205,7 +7205,7 @@ img {
     max-height: 80px; }
 
 .maincontent {
-  border: double medium #e5e3d6;
+  /* border: double medium #e5e3d6; */
   border-top: 0;
   margin: 0 30px;
   padding: 80px 0;

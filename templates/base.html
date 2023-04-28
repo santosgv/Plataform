@@ -18,7 +18,7 @@
 			{% block 'head' %}
 			{% endblock %}
     </head>
-    {% cache 900 perfil %}
+    {% cache 900 loja %}
     {% if imagens %}
     <div>
     </div>
@@ -35,13 +35,13 @@
                     </li>
                 </ul> 
             </div>
-            {% cache 120 aberta %}
+          
             {% if imagens.aberta != True %}
             <div class="loja_fechada">
                 A loja está fechada no momento.
             </div>
            {% endif %}
-           {% endcache %}
+      
     </nav>
     
     <body>
@@ -55,6 +55,7 @@ style="background-image:url(/media/{{ imagens.backgroud }});">
 </div>
 </div>
 {% else %}
+
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="{% static 'img/logo.png' %}" style="height: 80px;"></a>
     <button
     class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -79,13 +80,13 @@ style="background-image:url({% static 'img/uma-vista-frontal.jpg' %});">
 </div>
 </div>
 {% endif %}
-{% endcache %}
+{% endcache%}
 <div class="clearfix">
    
 </div>
 
     <div class="text-center" role="alert">
-      {% cache 120 avisos %}
+     {% cache 180 avisos %}
         {% if avisos %}
         {% for aviso in avisos%}
         <div class="alert {{aviso.tag}}" role="alert">
@@ -93,8 +94,9 @@ style="background-image:url({% static 'img/uma-vista-frontal.jpg' %});">
         </div>
         {% endfor %}
         {% endif %}
+        {%endcache%}
       </div>
-      {% endcache %}
+ 
     {% block 'body' %}
     
 	{% endblock %}
@@ -200,7 +202,7 @@ style="background-image:url({% static 'img/uma-vista-frontal.jpg' %});">
             <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
             <p>
               <i class="fas fa-envelope me-3"></i>
-              info@example.com
+              sac@foodshopee.com
             </p>
             <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
             <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
