@@ -46,6 +46,7 @@ SHARED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'corsheaders',
     'django_apscheduler',
     'Core', 
@@ -59,7 +60,6 @@ TENANT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'corsheaders',
-    'django_apscheduler',
     # tenant-specific apps
      'Core',
 ]
@@ -84,6 +84,8 @@ MIDDLEWARE = [
 
 INTERNAL_IPS = [
     "127.0.0.1",
+    'localhost',
+    ''
 ]
 
 ROOT_URLCONF = 'Plataform.urls'
@@ -195,8 +197,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
 STATIC_ROOT = os.path.join('static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 # separando arquvios storege por inquelino
-DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
+#DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
 MEDIA_URL = '/media/'
 
 MESSAGE_TAGS = {
