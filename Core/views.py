@@ -6,7 +6,8 @@ from .models import Adicional, CupomDesconto, ItemPedido, Loja, Opcao, Pedido, P
 from django.contrib import messages
 from django.contrib.messages import constants
 from django.views.decorators.cache import cache_page
-
+import os
+from django.conf import settings
 
 def index(request):
     if not request.session.get('carrinho'):
@@ -116,6 +117,7 @@ def add_carrinho(request):
     request.session.save()
 
     return redirect('Core:index')
+
 
 def ver_carrinho(request):
     categorias = Categoria.objects.all()
@@ -246,3 +248,11 @@ def freteBairro(request):
                                     })
     return HttpResponse(data_json)
 
+@cache_page(60 * 15)
+def robots(request):
+    if not settings.DEBUG:
+        path = os.path.join(settings.STATIC_ROOT,'robots.txt')
+    else:
+        path = os.path.join(settings.BASE_DIR,'templates/static/robots.txt')
+        with open(path,'r') as arq:
+            return HttpResponse(arq, content_type='text/plain')
