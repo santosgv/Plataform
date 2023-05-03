@@ -1,12 +1,15 @@
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse ,JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .models import Adicional, CupomDesconto, ItemPedido, Loja, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
 from django.contrib import messages
 from django.contrib.messages import constants
 from django.views.decorators.cache import cache_page
 import os
+from django.db.models import Sum,Count
+from datetime import datetime
 from django.conf import settings
 
 def index(request):
@@ -117,7 +120,6 @@ def add_carrinho(request):
     request.session.save()
 
     return redirect('Core:index')
-
 
 def ver_carrinho(request):
     categorias = Categoria.objects.all()
@@ -256,3 +258,41 @@ def robots(request):
         path = os.path.join(settings.BASE_DIR,'templates/static/robots.txt')
         with open(path,'r') as arq:
             return HttpResponse(arq, content_type='text/plain')
+
+@login_required(login_url='/admin/')
+def dashbords(request):
+    return render(request,'dashbords.html')
+
+def total_vendas(request):
+    # Calcula o ticket médio de todos os pedidos
+    total_vendas = Pedido.objects.filter(entregue=True).aggregate(total=Sum('total'))['total']
+
+    return JsonResponse({'total_vendas': total_vendas})
+
+def ticket_medio(request):
+    total_vendas = Pedido.objects.filter(entregue=True).aggregate(total=Sum('total'))['total']
+    numero_pedidos = Pedido.objects.count()
+    ticket_medio =  total_vendas / numero_pedidos
+    ticket = f'{ticket_medio:,.2f}'
+    return JsonResponse({'ticket_medio':ticket})
+
+def mais_vendidos(request):    
+    agora = datetime.now()
+    um_mes_atras = agora.replace(month=agora.month-1)
+    itens_vendidos = ItemPedido.objects.filter(pedido__data__gte=um_mes_atras)
+    
+    # Agrupa os itens vendidos por produto e calcula o total de vendas de cada um
+    vendas_por_produto = {}
+    for item in itens_vendidos:
+        if item.produto not in vendas_por_produto:
+            vendas_por_produto[item.produto] = 0
+        vendas_por_produto[item.produto] += item.quantidade
+    
+    # Classifica os produtos por número de vendas e retorna o mais vendido do mês
+    mais_vendido = max(vendas_por_produto, key=vendas_por_produto.get)
+    return JsonResponse({'mais_vendido':mais_vendido.nome_produto})
+
+
+def bairro_mais_pedido(request):
+    bairro_mais_pedido = Pedido.objects.values('bairro__Nome').annotate(total_pedidos=Count('id')).order_by('-total_pedidos').first()
+    return JsonResponse({'bairro_mais_pedido':bairro_mais_pedido['bairro__Nome']})

@@ -4,7 +4,8 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-
+from django.urls import reverse
+from django.utils.html import format_html
 
 app_name ='Core'
 
@@ -18,7 +19,11 @@ urlpatterns = [
     path("finalizar_pedido/", views.finalizar_pedido, name='finalizar_pedido'),
     path("validaCupom/", views.validaCupom, name='validaCupom'),
     path("freteBairro/", views.freteBairro, name='freteBairro'),
-
+    path("dashbords/", views.dashbords, name='dashbords'),
+    path("total_vendas/", views.total_vendas, name='total_vendas'),
+    path("ticket_medio/", views.ticket_medio, name='ticket_medio'),
+    path("mais_vendidos/", views.mais_vendidos, name='mais_vendidos'),
+    path("bairro_mais_pedido/", views.bairro_mais_pedido, name='bairro_mais_pedido'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

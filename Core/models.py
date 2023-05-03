@@ -8,7 +8,10 @@ class Loja(models.Model):
     nome_Loja = models.CharField(max_length=100 )
     aberta = models.BooleanField(default=True)
     texto = models.CharField(max_length=200)
+    whatsapp = models.CharField(max_length=13)
 
+
+    
     def __str__(self):
         return self.nome_Loja
     

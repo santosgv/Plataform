@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+ 
+{% block 'titulo' %}Dashboard{% endblock%}
+
+{% block 'head' %}
+
+<link rel="stylesheet" href="{% static 'css/Dashboard.css' %}">
+{% endblock%}
+
+
+{% block 'body' %}
+<div class="container">
+    <br>
+    <div class="row">
+
+        <div  class="col-md informacoes_basicas">
+            
+            <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACx0lEQVR4nO3au2sUQRwH8PH9QLASRFCClUUqtTSolRGO+/02sI1NkEAsRDRVfHDzqyy1CSoYxAeIokFR8YGvwsJYaeFfoCAYFUkasfIrs7dJ9rjN3ezj3BnwBwvHLuztZ3/zm9nZWaUqCogsh9AJaP4A4ffQfNzsUz4FlFoGoYsQRsum6Yo3mAih6VIbwicMTHPSfHVJhHiAiWviWleExFuDDyrXAmG4AsI3rBFCvyD1Lcq1gFAfNM1YQzSfVe5lgvqi3xL0Q/OcXbOiAeUUQvPNZiaC/mifpmm7rAxtVy4EZO9KaLqVaComE+/sC50OuIEQvr10+w+OolHf36VmphxA0J0uPdK+RM187zCWHEn/j+G1aPAuM7D2BjE6ugqa71oMdsmaOdel97oOqe+OLj7q+eqHIfw5PjZZ+qAZIYSnMnSvJhPnIfTDfmzhtPOUh4kR9/JfDL2CppFM44yUjIGEq6H5frG7SiOLNUM5MTReFPGgEKKtZng4Z1a+5EcIPyyMSGIMQvPjfOegb9kRxwbXQNOj0hDtd3cOmiY6ds3tm86ByHvXrLMzkalmshZ73Jc/6SlC5rvmuGYaNFA+QtPTniMkUTPCe+IBsCTEWLgOws/+GUJSYdMQmi2IoOeVIoTettRMLoTmF9Ui2EBmF2rmDG3NWBO19RB+WT2C55vWDKS2zRrgJEJyvB6KEOYhruoLl/+ImmlOrz3PRLgBwm/cQnD2OQaELnuPMGH90sxlhAkIf3UDUfANPIROV48oY96tzMILX/A2EykLMJMpd+oPhH86nYmOGM2fIHQI4+HG6NipcBOETzbXLRxGtC5SBjvNREqlRDTZEf7tNMI2zCKM9wgTkKEd3iMW3qT4jlicpXmOMNH81MJ3hISbM40rLiJMQIJB7xGZHmdc/gTDGuMDoivGJ4SKo/lsVh+Dpo/RZj4iqxDxF2VGUu1lgfL8AAAAAElFTkSuQmCC">
+                &nbspR$ <span id="ticket_medio"></span></h1> 
+            
+        </div>
+
+        <div class="col-md informacoes_basicas">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEYElEQVR4nO1aXagVVRTelZVUhFGhhSX9CEn1VBKBdaOQDnTPrDUnDj1EiAWWhYQEdb3nzF4RBZIPRYVUglQSVAT1EtRDQWCUIULBJfrxIagHfwoif7LML/bM0evV2Xt+7syZ6Z75YL3N/matb9bea/baW6kGDRo0aFANIH4LQpuheRP6dKMaJUDoSQjjhGk6AvHvVKMAPLHy/CjgkwQIjb5WdQC63bPQ6yyBdK62Gy3IzS/ezacHHwrwd7GRZHasdSE0b4HwgXgHTzHN3yDgsczvCfhWG+esfO/xNZi456K8HAqaP0gV+EwRDkL8G6oUAJoFmv4crCWHIfySyeJsJP3O0szBT4vwmttBbzWEtkPT7sj4VzvX4BmhnyD8MYRXuLlpnYVrY46SxHkFmLLz0qO5eSPufxD4yx0CfG8Z9wdEzswgwPiV0Hwsn5N0BGvWnG0R4IdZCRAF86bF50vcY7sXpBbAAEKv53e0c52KAYR/L0CAj+K5vdsd4w5kygAD8xUh3A+/WtZsCDxfxQBC781eAG99LLfmtY5xO1XRgKZP7C+kyXgBvMuNM/mDp3chY/Ms/rycddrMTgChFx2ObrOPG5tnFjJovxsZ9+w8g2eEO+jzMrc//JnDn6eKF0DTw0WkXFH/AdC0x+HPeK4gXUhcdJQ6Y1gCJFaAXvsqVTQwwRe7X9pZkoon3GfEcvyS2peAxxzz/2DmCpAWENprF8FvpebR/EWM45syjB9uBTgOaP48a7mKA8RfHP3q0tHo/502Q1bNTz3eVQGE31JlAcKvOlJvS3a+8fNsZc45TtOnQ60AxwHNj9uVp+1qCMC61rnOP8yA2uW9PPBXOpT/DQHfVKoJ3ZG4bU+5GOcCenSF8+VVm6bd+SJLCVPro61mDYKNn4ZPq7IBTTuqD9QyBTd0Ly1fAKE36hc8H0NA95YevIEpMzVL+6MQfkQNCxDPq9GXn0rqG5YgQPvaBKd+nm6AlmDCX5lGrNnxlfbPn3hwErWf4wUIvFvUXAeEv7VngLdazXVA+B3HFHhBzXXAnMZYBTCnNPSKOZwozTQFCOiu6gQI6O7KK0CUbW+n7UQVK4CYbSztr1yAKOMeGroABtEZQg0EEH5fVQFI9xxzqWFkBZhulFYsQtVlFyYTzKpsdmPDn//bKlkE7Quj3xpsljaWbP2RuVT1vwNk1XxTmiC8dWAPmkZmbr4+L4Pm58KaL/S86Q2qugLhRQv67vS5ylOmn5iZT/uPhbdEZnKZo/tnVN2AsF/oaJdp+jLLghUef2n618F3n6oTENBtKVbu1M2LxPa3ph2qTkCaC1Ga16bm0/yjm48OqToBmh5IFsC/PzWf8K6EDNij6gRM+pdB+C+Hw4ch3UWp+YSeTRB0q6obIDTpcHgiI9cC6zQIb4f4i1UdAbMWaN530lzdm7dtHWUVfTijGpiT4X5nqaozYC5G9dvXh5b13q5t02UORze0FxbjYYMGDRo0aNCggRpt/AfZtUCm14B6yQAAAABJRU5ErkJggg==">
+            <h1>&nbsp<span id="produtos_mais_vendidos"></span></h1> 
+        </div>
+        
+        <div class="col-md informacoes_basicas">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFGElEQVR4nO1Za4hVVRQ+5quysOwFGSWF9oKelv1KjISpmTlrnbFDVD+M0KkIG2TQGWfuWSv6Uf2ICEIxqAjpYRFFCEX2IsiKCu1BfzJ7mD+KSnS0SJr8Yp9z9N577j6vO/fWTMyC/ePevdfj23vttfZax3EmCEH9E5yJSNCu46Hu9VB+CMqfQuhHZyIQfH8qAr4SQgMQfhPKf0IZdaPCFzrjkVDpvhjq3QvhVyG8v8Hw5BDuc8YDQb3TIZ4P4cch/EOu4ZoEQlv+G8P7l85CwDdA+REofwHhwwnjfoLws1DuhbirIbQrB8wIenun/zt+rnw1hIch/C6EDiVc43cIvQ6hfmj3JXCcKXX86s+B8OfZYNxr22P8MJ8H5bug/BKU9yZc4W8ofQylBxC4S7CqY2a+vJ5zIPRzBpj7W2P4IJ9y1M+Vv7X48a5ozr3J7HBTOirepRD+JOWefNic4av948J4LvRgKDzc5TrBv4WnIXSnOZ2mlKTpVn8O1F0I4eVQ3hTppFEonVSAWY+BeldAaW0Uz+mPxK6Y+P4OlIbC++D7UxtkBO4iKD0arePtEHoDQgEqPfPHBozeD20IXC9twTworYDyZgj/YjnOQxB6Eup1mEiUrqjrVCi/nJEH/oLSBpO1mwPClfhUNtgmn8iP355fLEfwV8XyAe8woMsD8a6JgXzdOCncl63YwpSU4ThToPRaueTG26D+jNTLrrwRwutRcc+vAlk8DUr7YrvmJVC6F+Uo3ZQLJPA6S2fpaAw2guiZH+ab6pq9UPfMmo1/Jd6IlY2GKO/JeBb05wIpexq1mXqNe2JC1lrL6R01GuLdE9v1gs2Qp1PcarT2aO0glh9riWwlBt2e2NQ7GtbURCljT8z3q4mw9caId1tKhFmRfxq8oHkQ4dhcJ29Vx0wIv1fjEVuSIR7Ku6N5d2G9Meu6z6h70JkQHLhL8kBUc8YYgAh9aa9N3EVhfZJ4j8VAnkq7Y8a9Posn90B7zi0CIuLruWCMJ7K7qK4jBKVb40142zLJD8eTj8W/MZGGU4PyxvjPjyY2kP6ls6L6gUYx2HlyPjN9AKXLTJJy2kQwCbDiXm5evIWBhIymGDITAS3LZDTBYJ1/WrsAWJ8/YbgtCiR60ZqJjTk7IE5BgnpnmWIoDCamwRCNHeF/Q51zi8thKQ4k8K6KdjyrdqZ9prgqpFz4bggdyDBgxNTrxQs6Tu20WGqRjCOMiqiuVuxgwlWHC8rsaiinbUCixfRiSvnahwF/diGFAXVbOiZZQA6bqOkUkT3gzw5tSXhN40LhlQkla2xVYKqi3t7pUPq+dAgNDVs8rVzHpvrATKkWaxSUABHyC99SGkQVzM1NtJ/sQGJjdmYuyARCzzcNROmZ0vpygKy3LQh7TspvQflg1JjoOtsCJK9bmHVXdjbIy9GZDUSJrUAigbU7uNWyQwfH4FoHLPIydWYDMZHhCGPNM9qSE0baDkSydeZeAeuJRN8tck6Evmmpa0m2zuaAhP5KW8NdMk032x1Req6Vlx05OpsCMt7Cb3uBmIQo/F27E2LbgYS85uNO2SdKQN1N6SoKpGgTooHfNK1b/GhMEtS7rjiQSNE2001MXZwmw3xqiJ7qaQD2F2k52V/BpkKtyspabIsqnMqQJmeocy6U7os+L4SGm97t9ui/aiu0sDytJuvmgYTd9vbV6IWa5SnfGNOZ0n1a0rro7SSoP6OmFG8JkHE5nP89kEmapElyDP0Dy7T00MB9euEAAAAASUVORK5CYII=">
+             <h1>&nbspR$ <span id="faturamento_total"></span></h1> 
+        </div>
+
+        <div  class="col-md informacoes_basicas">
+            
+            <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAABf0lEQVR4nO2aMU4DMRBFBwkhWs7BFSJxABTshpYcgZYCPFyBK3AFrpALUFDSpOAElEgfJUgUkCy79njxZv6Xptoo8+f525GyFqEoiqIoivpD0Iiusvme8IYUnqDhHndhjpvzE/EFIP4E8oEUX6DxESleQ+MMenlUd9KmAGytd2hYIoUH6MUVbuen4gwAcnubDoxMUwSgu0G5TIAQgKMEYP377vUQRMHwJb6aAIDClW8WgHR8vh5MhwBgBI8Ahgj/uGqTSQAmUC4ASIdvAsgVGorn3iZARvBiBkC2PCs1SQA9xQRoA1sA3s8AjDSstT+zBpLRnACUCcDebAF4PwNgDMD6OQEoEwBuAW3zDFit3+1nGyn0V70BdlUKr1+XGhbHppMP9Fe9AX4NHp83Fxf07NB04kx/1Rvgu8Jyc69H5MB00kJ/1RugtFHP/rn+zAyAAGKdPx97LkDuApkZAAHEQQkYOyHNnQEggMgEwPMWqC0CUCYALSaToiiKoiiZjD4Bq0A0nNC+33MAAAAASUVORK5CYII=">
+            </svg>&nbsp<span id="bairro_mais_pedido"></span></h1> 
+            
+        </div>
+       
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/js.js' %}"></script>
+
+
+<script>
+    window.onload = function(e){
+    renderiza_total_vendido('{% url "Core:total_vendas" %}')
+    renderiza_produtos_mais_vendidos('{% url "Core:mais_vendidos" %}')
+    renderiza_tikect_medio('{% url "Core:ticket_medio" %}')
+    renderiza_bairro_mais_pedido('{% url "Core:bairro_mais_pedido" %}')
+
+
+}
+</script>
+{% endblock %}

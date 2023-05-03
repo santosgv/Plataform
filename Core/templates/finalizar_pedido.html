@@ -118,7 +118,7 @@ Checkout
           <br>
           <h3 class="rosa">Bairro<span class="importante">*</span>:</h3>
           <select class="form-control" required="required" class="form-control" placeholder="Bairro" id="inputbairro" name="bairro" onchange="freteBairro()">
-            <option selected>Selecione seu Bairro</option>
+            <option value="" selected>Selecione seu Bairro</option>
             {% for bairro in bairros %}
               <option value="{{bairro.id}}">{{bairro}}</option>
               {% endfor%}
