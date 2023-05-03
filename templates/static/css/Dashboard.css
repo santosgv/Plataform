@@ -37,7 +37,7 @@
     margin-right: auto;
     border: 1px solid transparent;
 
-    border-image: linear-gradient(to right top, #bd31c4, #8e3bb0, #643b97, #413579, #282c59);
+    border-image: linear-gradient(to right top, var(--primary),var(--orange),var(--red));
 
     border-image-slice: 1;
     margin-left: 1%;

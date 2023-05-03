@@ -23,6 +23,7 @@ urlpatterns = [
     path("total_vendas/", views.total_vendas, name='total_vendas'),
     path("ticket_medio/", views.ticket_medio, name='ticket_medio'),
     path("mais_vendidos/", views.mais_vendidos, name='mais_vendidos'),
+    path("bairro_mais_pedido/", views.bairro_mais_pedido, name='bairro_mais_pedido'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

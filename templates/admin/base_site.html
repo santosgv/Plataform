@@ -10,6 +10,7 @@
 
 
 {%block extrastyle%}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="icon" href="{% static 'img/icon.png' %}" />
 <link rel="stylesheet" href="{% static 'admin/admin.css' %}">
 {%endblock%}
@@ -17,12 +18,12 @@
 {% block pretitle %}
 {% endblock %}
 
-{% block sidebar %}
-{{ block.super }}
-<a href="{% url 'Core:dashbords' %}">akiii</a>
-
+{% if user.is_authenticated %}
+{% block content_subtitle %}
+<a href="{% url 'Core:dashbords' %}"><span class="material-icons " style="font-size: 35px; color: rgb(237, 95, 30);"> add_chart </span> </a>
 {% endblock %}
-
-
+{% else %}
+nada
+{% endif %}
 
 

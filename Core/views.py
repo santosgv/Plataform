@@ -1,13 +1,14 @@
 import json
 from django.http import HttpResponse ,JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .models import Adicional, CupomDesconto, ItemPedido, Loja, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
 from django.contrib import messages
 from django.contrib.messages import constants
 from django.views.decorators.cache import cache_page
 import os
-from django.db.models import Sum
+from django.db.models import Sum,Count
 from datetime import datetime
 from django.conf import settings
 
@@ -258,7 +259,7 @@ def robots(request):
         with open(path,'r') as arq:
             return HttpResponse(arq, content_type='text/plain')
 
-
+@login_required(login_url='/admin/')
 def dashbords(request):
     return render(request,'dashbords.html')
 
@@ -290,3 +291,8 @@ def mais_vendidos(request):
     # Classifica os produtos por número de vendas e retorna o mais vendido do mês
     mais_vendido = max(vendas_por_produto, key=vendas_por_produto.get)
     return JsonResponse({'mais_vendido':mais_vendido.nome_produto})
+
+
+def bairro_mais_pedido(request):
+    bairro_mais_pedido = Pedido.objects.values('bairro__Nome').annotate(total_pedidos=Count('id')).order_by('-total_pedidos').first()
+    return JsonResponse({'bairro_mais_pedido':bairro_mais_pedido['bairro__Nome']})
