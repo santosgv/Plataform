@@ -2,7 +2,7 @@ from django.contrib import admin
 from django_tenants.admin import TenantAdminMixin
 from django_tenants.utils import get_public_schema_name
 from django_celery_beat.models import PeriodicTask
-from .admin_celery import CustomPeriodicTaskAdmin
+
 
 from .models import Domain, Cliente
 
@@ -41,5 +41,3 @@ class TenantAdmin(PublicTenantOnlyMixin,TenantAdminMixin, admin.ModelAdmin):
         )
         inlines = [DomainInline]
 
-admin.site.unregister(PeriodicTask)
-admin.site.register(PeriodicTask, CustomPeriodicTaskAdmin)
