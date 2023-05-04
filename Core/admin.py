@@ -1,12 +1,25 @@
 from django.contrib import admin
 from .models import Aviso, Categoria, CupomDesconto, ItemPedido, Loja, Pedido, Produto, Adicional, Opcao,Bairro
 
+# Actions
 
+@admin.action(description="Realizar Entregas Selecionadas")
+def action_entregar_pedidos(modeladmin,request,queryset):
+    for pedido in queryset:
+        pedido.entregue =True
+        pedido.save()
+
+@admin.action(description="Desativar Produtos Selecionados")
+def action_desativar_produtos(modeladmin,request,queryset):
+    for produto in queryset:
+        produto.ativo =False
+        produto.save()
 
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
     list_display = ('icone', 'nome_produto', 'categoria', 'preco', 'ativo')
     list_editable = ('preco','ativo')
+    actions= [action_desativar_produtos,]
 
 @admin.register(Loja)
 class LojaAdmin(admin.ModelAdmin):
@@ -54,6 +67,7 @@ class PedidoAdmin(admin.ModelAdmin):
     search_fields = ('entregue',)
     readonly_fields = ('usuario', 'total','cupom','frete', 'troco', 'pagamento', 'ponto_referencia', 'data', 'cep', 'rua', 'numero', 'bairro', 'telefone')
     list_filter = ('entregue','data',)
+    actions = [action_entregar_pedidos,]
 
 
 admin.site.register(Pedido, PedidoAdmin)
@@ -61,29 +75,3 @@ admin.site.register(Pedido, PedidoAdmin)
 admin.site.register(Categoria)
 admin.site.register(Aviso)
 
-
-
-
-
-class MyAdminSite(admin.AdminSite):
-    disable_add_button = False
-
-    def has_add_permission(self, request):
-        return not self.disable_add_button
-    
-my_admin_site = MyAdminSite(name='myadmin')
-
-
-@admin.register(Produto, site=my_admin_site)
-class MyModel1Admin(admin.ModelAdmin):
-    def get_urls(self):
-        urls = super().get_urls()
-        if my_admin_site.disable_add_button:
-            return []
-        return urls
-
-    def has_change_permission(self, request, obj=None):
-        return not my_admin_site.disable_add_button
-
-    def has_delete_permission(self, request, obj=None):
-        return not my_admin_site.disable_add_button
