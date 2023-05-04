@@ -49,4 +49,4 @@ def desativar_clientes():
         with schema_context(cliente.schema_name):
             cliente.is_active = False
             cliente.save()
-            return 'Desativado o cliente{cliente} por falta de pagamento'
+            return 'Desativado o cliente por falta de pagamento'
