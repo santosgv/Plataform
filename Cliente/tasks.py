@@ -1,11 +1,15 @@
 from celery import shared_task
-from django_tenants.utils import tenant_context,get_tenant_model
+from django_tenants.utils import tenant_context,get_tenant_model,schema_context
 from django.utils import timezone
 from .models import Cliente
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from decouple import config
 from celery import Celery
+
+
+tenant_model = get_tenant_model()
+tenants = tenant_model.objects.all()
 
 class TenantAwareCelery(Celery):
     def execute(self, *args, **kwargs):
@@ -38,14 +42,11 @@ def Envia_email_com_super_usuario(client):
 
 
 @shared_task
-def desativar_clientes(instance_id):
-     try:
-         instance = Cliente.objects.get(id=instance_id)
-         if not instance.is_active_now():
-             instance.is_active = False
-             instance.save()
- 
-             # adiciona o resultado ao banco redis
-             return 'cliente desativado'
-     except Cliente.DoesNotExist:
-         return 'cliente nao existe'
+def desativar_clientes():
+    today = timezone.now().date()
+    clientes = Cliente.objects.filter(pago_ate__lt=today, is_active=True)
+    for cliente in clientes:
+        with schema_context(cliente.schema_name):
+            cliente.is_active = False
+            cliente.save()
+            return 'Desativado o cliente{cliente} por falta de pagamento'
