@@ -41,6 +41,22 @@
     </div>
 
 </div>
+
+<div class="row">
+    <div class="col-md">
+        <div class="grafico">
+        <h1>Faturamento:</h1>
+        <canvas id="faturamento_mensal" width="250" height="200"></canvas>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'js/js.js' %}"></script>
 
@@ -51,6 +67,7 @@
     renderiza_produtos_mais_vendidos('{% url "Core:mais_vendidos" %}')
     renderiza_tikect_medio('{% url "Core:ticket_medio" %}')
     renderiza_bairro_mais_pedido('{% url "Core:bairro_mais_pedido" %}')
+    renderiza_total_vendas_12_meses('{% url "Core:vendas_ultimos_12_meses" %}')
 
 
 }

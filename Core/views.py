@@ -9,7 +9,8 @@ from django.contrib.messages import constants
 from django.views.decorators.cache import cache_page
 import os
 from django.db.models import Sum,Count
-from datetime import datetime
+from datetime import datetime,timedelta
+from django.db.models.functions import TruncMonth
 from django.conf import settings
 
 def index(request):
@@ -263,12 +264,16 @@ def robots(request):
 def dashbords(request):
     return render(request,'dashbords.html')
 
+@login_required(login_url='/admin/')
+@cache_page(60 * 15)
 def total_vendas(request):
     # Calcula o ticket médio de todos os pedidos
     total_vendas = Pedido.objects.filter(entregue=True).aggregate(total=Sum('total'))['total']
 
     return JsonResponse({'total_vendas': total_vendas})
 
+@login_required(login_url='/admin/')
+@cache_page(60 * 15)
 def ticket_medio(request):
     total_vendas = Pedido.objects.filter(entregue=True).aggregate(total=Sum('total'))['total']
     numero_pedidos = Pedido.objects.count()
@@ -276,6 +281,8 @@ def ticket_medio(request):
     ticket = f'{ticket_medio:,.2f}'
     return JsonResponse({'ticket_medio':ticket})
 
+@login_required(login_url='/admin/')
+@cache_page(60 * 15)
 def mais_vendidos(request):    
     agora = datetime.now()
     um_mes_atras = agora.replace(month=agora.month-1)
@@ -292,7 +299,17 @@ def mais_vendidos(request):
     mais_vendido = max(vendas_por_produto, key=vendas_por_produto.get)
     return JsonResponse({'mais_vendido':mais_vendido.nome_produto})
 
-
+@login_required(login_url='/admin/')
+@cache_page(60 * 15)
 def bairro_mais_pedido(request):
     bairro_mais_pedido = Pedido.objects.values('bairro__Nome').annotate(total_pedidos=Count('id')).order_by('-total_pedidos').first()
     return JsonResponse({'bairro_mais_pedido':bairro_mais_pedido['bairro__Nome']})
+
+@login_required(login_url='/admin/')
+@cache_page(60 * 15)
+def vendas_ultimos_12_meses(request):
+    hoje = datetime.today()
+    data_limite = hoje - timedelta(days=365)
+    vendas = Pedido.objects.annotate(mes_venda=TruncMonth('data')).values('mes_venda').annotate(total_vendas=Count('id')).filter(data__gte=data_limite).order_by('mes_venda')
+    data_vendas = [{'mes_venda': venda['mes_venda'].strftime('%d-%m-%Y'), 'total_vendas': venda['total_vendas']} for venda in vendas]
+    return JsonResponse({'data': data_vendas})
