@@ -58,7 +58,7 @@ class Produto(models.Model):
 
     @mark_safe
     def icone(self):
-        return f'<img width="30px" src="/media/{self.img}">'
+        return f'<img width="30px" src="{self.img.url}">'
 
 
     def __str__(self):
