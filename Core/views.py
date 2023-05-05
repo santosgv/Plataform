@@ -20,6 +20,7 @@ def index(request):
     Categorias = Categoria.objects.all()
     imagens = Loja.objects.first()
     Produtos = Produto.objects.all().filter(ativo=True)
+
     avisos =Aviso.objects.all().filter(ativo=True).filter(para = '1')
     return render(request,'index.html',{
                                          'imagens':imagens,
@@ -216,6 +217,7 @@ def finalizar_pedido(request):
 
             )
             avisos =Aviso.objects.all().filter(ativo=True).filter(para = '2')
+            imagens = Loja.objects.first()
             request.session['carrinho'].clear()
             request.session.save()
             return render(request, 'pedido_realizado.html',{
@@ -223,7 +225,7 @@ def finalizar_pedido(request):
             })
         else:
             messages.add_message(request, constants.ERROR, 'Escolha ao menos um produto antes de efetuar a compra!')
-            return redirect('/finalizar_pedido/')
+            return render(request,'finalizar_pedido.html',{'imagens':imagens})
 
 @cache_page(60 * 15)
 def validaCupom(request):

@@ -29,7 +29,7 @@
 						{% if produto.categoria.id == categoria.id %}
 						<div class="item row align-items-center">
 							<div class="col-sm-3 pr-5">
-								<img class="product-img" src="/media/{{produto.img}}">
+								<img class="product-img" src="{{produto.img.url}}">
 							</div>
 							<div class="details col-sm-9">
 								<div class="item__header">
@@ -42,11 +42,11 @@
 								{% if imagens.aberta == False %}
 								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn disabled" data-id="{{produto.id}}"
 									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="/media/{{produto.img}}">Loja Fechada</a>
+									data-image="{{produto.img.url}}">Loja Fechada</a>
 								{%else%}
 								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
 									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="/media/{{produto.img}}">Ver Produto</a>
+									data-image="{{produto.img.url}}">Ver Produto</a>
 									{% endif %}	
 							</div>
 						</div>
@@ -59,7 +59,7 @@
 						{% if produto.categoria.id == categoria.id %}
 						<div class="item row align-items-center">
 							<div class="col-sm-3 pr-5">
-								<img class="product-img" src="/media/{{produto.img}}">
+								<img class="product-img" src="{{produto.img.url}}">
 							</div>
 							<div class="details col-sm-9">
 								<div class="item__header">
@@ -71,7 +71,7 @@
 								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
 								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
 									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="/media/{{produto.img}}">Ver Produto</a>
+									data-image="{{produto.img.url}}">Ver Produto</a>
 							</div>
 						</div>
 						{% endif %}

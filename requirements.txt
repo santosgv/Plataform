@@ -5,6 +5,8 @@ asgiref==3.6.0
 async-timeout==4.0.2
 billiard==3.6.4.0
 blinker==1.4
+boto3==1.26.127
+botocore==1.29.127
 Brlapi==0.8.3
 celery==5.2.7
 certifi==2020.6.20
@@ -15,6 +17,7 @@ click-plugins==1.1.1
 click-repl==0.2.0
 colorama==0.4.4
 command-not-found==0.3
+cron-descriptor==1.2.35
 cryptography==3.4.8
 cupshelpers==1.0
 dbus-python==1.2.18
@@ -23,16 +26,20 @@ distro==1.7.0
 distro-info===1.1build1
 Django==4.2
 django-apscheduler==0.6.2
+django-celery-beat==2.5.0
 django-cors-headers==3.14.0
 django-db-multitenant==0.3.2
 django-debug-toolbar==4.0.0
+django-storages==1.13.2
 django-tenants==3.4.8
+django-timezone-field==5.0
 flower==1.2.0
 httplib2==0.20.2
 humanize==4.6.0
 idna==3.3
 importlib-metadata==4.6.4
 jeepney==0.7.1
+jmespath==1.0.1
 keyring==23.5.0
 kombu==5.2.4
 language-selector==0.1
@@ -61,6 +68,7 @@ PyNaCl==1.5.0
 pyparsing==2.4.7
 pyRFC3339==1.1
 python-apt==2.4.0+ubuntu1
+python-crontab==2.7.1
 python-dateutil==2.8.1
 python-debian===0.1.43ubuntu1
 python-decouple==3.8
@@ -71,6 +79,7 @@ PyYAML==5.4.1
 redis==4.5.4
 reportlab==3.6.8
 requests==2.25.1
+s3transfer==0.6.1
 SecretStorage==3.3.1
 six==1.16.0
 sqlparse==0.4.3
