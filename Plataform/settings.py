@@ -119,10 +119,10 @@ WSGI_APPLICATION = 'Plataform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME': 'Aplication',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'NAME': config('BANCO_DEV'),
+        'USER': config('BANCO_USER_DEV'),
+        'PASSWORD': config('BANCO_PASSWORD_DEV'),
+        'HOST': config('BANCO_HOST_DEV'),
         'PORT': '5432',
     }
 }
