@@ -21,9 +21,31 @@
 {% if user.is_authenticated %}
 {% block content_subtitle %}
 <a href="{% url 'Core:dashbords' %}"><span class="material-icons " style="font-size: 35px; color: rgb(237, 95, 30);"> add_chart </span> </a>
+  <script>
+    function verificarURL(url, valorEsperado) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+
+  xhr.onload = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var resposta = xhr.responseText;
+      if (resposta.includes(valorEsperado)) {
+        var audio = new Audio('{% static "sons/alert.mp3" %}');
+        audio.play();
+      }
+    }
+  };
+
+  xhr.send();
+}
+
+setInterval(function() {
+  verificarURL('http://127.0.0.1:8000/sinalizar_pedidos/', 'OK');
+}, 5000);
+ </script>
+
 {% endblock %}
 {% else %}
 nada
 {% endif %}
-
 

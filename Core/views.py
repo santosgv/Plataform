@@ -315,3 +315,6 @@ def vendas_ultimos_12_meses(request):
     vendas = Pedido.objects.annotate(mes_venda=TruncMonth('data')).values('mes_venda').annotate(total_vendas=Count('id')).filter(data__gte=data_limite).order_by('mes_venda')
     data_vendas = [{'mes_venda': venda['mes_venda'].strftime('%d-%m-%Y'), 'total_vendas': venda['total_vendas']} for venda in vendas]
     return JsonResponse({'data': data_vendas})
+
+def sinalizar_pedidos(request):
+    return HttpResponse('OK', status=200)
