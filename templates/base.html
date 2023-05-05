@@ -22,7 +22,7 @@
     {% if imagens %}
     <div>
     </div>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="/media/{{ imagens.logo }}" style="height: 80px;"></a>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="{{ imagens.logo.url }}" style="height: 80px;"></a>
         <button
         class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"> <a class="nav-link" href="{% url 'Core:index' %}">Bem Vindo<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/">Area Adiministrativa</a>
+                    <!--  <li class="nav-item"> <a class="nav-link" href="/admin/">Area Adiministrativa</a> -->
                     </li>
                 </ul> 
             </div>
@@ -46,7 +46,7 @@
     
     <body>
         <div class="block hero1 my-auto"
-style="background-image:url(/media/{{ imagens.backgroud }});">
+style="background-image:url({{ imagens.backgroud.url }});">
 <div class="container-fluid text-center">
 	<h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="0">{{imagens.nome_Loja}}</h1>
 	<p class="lead text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">{{imagens.texto}}</p>
