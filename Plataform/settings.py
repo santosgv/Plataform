@@ -198,8 +198,9 @@ STATIC_ROOT = os.path.join('static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
-# separando arquvios storege por inquelino
+# unifica os arquvios storege por inquelino
 #DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
+
 MEDIA_URL = '/media/'
 
 MESSAGE_TAGS = {
