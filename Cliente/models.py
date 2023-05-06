@@ -10,6 +10,7 @@ class Cliente(TenantMixin):
     pago_ate = models.DateField(default=timezone.now().date())
     on_trial = models.BooleanField(default=True, blank=True)
     descricao = models.TextField(blank=True)
+    email =models.EmailField()
 
     is_active = models.BooleanField(default=False, blank=True)
     created_on = models.DateField(auto_now_add=True)
