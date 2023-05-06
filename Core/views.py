@@ -11,6 +11,7 @@ import os
 from django.db.models import Sum,Count
 from datetime import datetime,timedelta
 from django.db.models.functions import TruncMonth
+from django.utils.timezone import now, timedelta
 from django.conf import settings
 
 def index(request):
@@ -315,3 +316,13 @@ def vendas_ultimos_12_meses(request):
     vendas = Pedido.objects.annotate(mes_venda=TruncMonth('data')).values('mes_venda').annotate(total_vendas=Count('id')).filter(data__gte=data_limite).order_by('mes_venda')
     data_vendas = [{'mes_venda': venda['mes_venda'].strftime('%d-%m-%Y'), 'total_vendas': venda['total_vendas']} for venda in vendas]
     return JsonResponse({'data': data_vendas})
+
+def sinalizar_pedidos(request):
+    hora_atual = datetime.now()
+    hora_limite = hora_atual - timedelta(minutes=5)
+    pedidos = Pedido.objects.filter(data__gte=hora_limite)
+
+    if pedidos.exists() == True:
+        return HttpResponse('OK', status=200)
+    else:
+        return HttpResponse('sem pedido', status=404)

@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from django.utils.timezone import now
 from django.utils.safestring import mark_safe
 
 class Loja(models.Model):
@@ -87,7 +87,7 @@ class Pedido(models.Model):
     cupom = models.ForeignKey(CupomDesconto, null=True, blank=True, on_delete=models.DO_NOTHING)
     pagamento = models.CharField(max_length=20)
     ponto_referencia = models.CharField(max_length=2000, blank=True)
-    data = models.DateTimeField(default=datetime.now())
+    data = models.DateTimeField(default=now)
     cep = models.CharField(max_length=50, blank=True)
     rua = models.CharField(max_length=200)
     numero = models.CharField(max_length=10)
