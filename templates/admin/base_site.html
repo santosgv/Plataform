@@ -32,6 +32,7 @@
       if (resposta.includes(valorEsperado)) {
         var audio = new Audio('{% static "sons/alert.mp3" %}');
         audio.play();
+        alert('Novo pedido recebido!');
       }
     }
   };
@@ -41,7 +42,7 @@
 
 setInterval(function() {
   verificarURL('http://127.0.0.1:8000/sinalizar_pedidos/', 'OK');
-}, 5000);
+}, 2 * 60 * 1000);
  </script>
 
 {% endblock %}
