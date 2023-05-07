@@ -31,6 +31,15 @@ def index(request):
                                          'avisos':avisos,
                                          })
 
+def sobre(request):
+    return render(request,'about.html')
+
+def termos(request):
+    return render(request,'termos.html')
+
+def politica(request):
+    return render(request,'politicas.html')     
+
 @cache_page(60 * 15)
 def categoria(request,id):
     if not request.session.get('carrinho'):
