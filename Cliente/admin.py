@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django_tenants.admin import TenantAdminMixin
 from django_tenants.utils import get_public_schema_name
-from django_celery_beat.models import PeriodicTask
+
 
 
 from .models import Domain, Cliente
@@ -41,3 +41,21 @@ class TenantAdmin(PublicTenantOnlyMixin,TenantAdminMixin, admin.ModelAdmin):
         )
         inlines = [DomainInline]
 
+
+from django_tenants.admin import TenantAdminMixin
+from django_celery_beat.admin import PeriodicTaskAdmin, CrontabScheduleAdmin,ClockedScheduleAdmin
+from django_celery_beat.models import PeriodicTask,CrontabSchedule,ClockedSchedule ,SolarSchedule ,IntervalSchedule
+
+
+
+# Removendo as models do periodic Task
+admin.site.unregister(PeriodicTask)
+#admin.site.register(PeriodicTask, CustomPeriodicTaskAdmin)
+admin.site.unregister(CrontabSchedule)
+#admin.site.register(CrontabSchedule, CustomCrontabScheduleAdmin)
+admin.site.unregister(ClockedSchedule)
+#admin.site.register(ClockedSchedule, CustomClockedScheduleAdmin)
+
+admin.site.unregister(SolarSchedule)
+admin.site.unregister(IntervalSchedule)
+#admin.site.register(SolarSchedule, CustomSolarScheduleAdmin)
