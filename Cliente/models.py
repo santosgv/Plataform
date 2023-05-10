@@ -34,7 +34,8 @@ class Cliente(TenantMixin):
         return f"{self.nome}"
 
     def is_active_now(self):
-        return self.pago_ate > timezone.now().date()
+        pago_ate = self.pago_ate.date()
+        return pago_ate > timezone.now().date()
 
 
 class Domain(DomainMixin):
