@@ -3,12 +3,11 @@ from django.utils.timezone import now
 from django.contrib.auth.models import User
 from django_tenants.models import DomainMixin, TenantMixin
 from django.utils import timezone
-import datetime
 
 class Cliente(TenantMixin):
     Usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     nome = models.CharField(max_length=100)
-    pago_ate = models.DateField(default=now()+datetime.timedelta(days=2))
+    pago_ate = models.DateField(default=now)
     on_trial = models.BooleanField(default=True, blank=True)
     descricao = models.TextField(blank=True)
     email =models.EmailField()

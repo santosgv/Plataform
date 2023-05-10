@@ -69,7 +69,7 @@ INSTALLED_APPS = list(SHARED_APPS) + [
 
 MIDDLEWARE = [
     'django_tenants.middleware.main.TenantMainMiddleware',
-    'Plataform.middleware.TenantActiveMiddleware',
+    #'Plataform.middleware.TenantActiveMiddleware',
     #'Plataform.middleware.RemoveWWWMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -119,10 +119,10 @@ WSGI_APPLICATION = 'Plataform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME': config('BANCO'),
-        'USER': config('BANCO_USER'),
-        'PASSWORD': config('BANCO_PASSWORD'),
-        'HOST': config('BANCO_HOST'),
+        'NAME': config('BANCO_DEV'),
+        'USER': config('BANCO_USER_DEV'),
+        'PASSWORD': config('BANCO_PASSWORD_DEV'),
+        'HOST': config('BANCO_HOST_DEV'),
         'PORT': '5432',
     }
 }
