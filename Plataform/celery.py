@@ -15,7 +15,7 @@ app.config_from_object('django.conf.settings',namespace='CELERY')
 app.conf.beat_schedule ={
     'desativar_clientes_todos_os_dias':{
         'task':'Cliente.tasks.desativar_clientes',
-        'schedule': crontab()
+        'schedule': crontab(minute=0, hour=0)
     }
 }
 
