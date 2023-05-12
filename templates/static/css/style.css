@@ -1813,7 +1813,7 @@ fieldset:disabled a.btn {
   border-color:var(--primary); }
   .btn-primary:hover {
     color: #fff;
-    background-color: #a16d36;
+    background-color: var(--orange);
     border-color: #986633; }
   .btn-primary:focus, .btn-primary.focus {
     color: #fff;
