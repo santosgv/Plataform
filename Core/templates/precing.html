@@ -1,0 +1,100 @@
+{%extends 'base.html'%}
+{% load static %}
+
+<title>{% block 'title' %}
+	Planos e Preços
+	{% endblock %}</title>
+
+    {% block 'head' %}
+    <link rel="stylesheet" href="{% static 'css/precing.css' %}">
+			{% endblock %}
+
+{% block 'body' %}
+
+<section class="pricing py-5">
+    <div class="container">
+
+        <article class="article" data-aos="fade-up"
+data-aos-duration="1000"
+data-aos-offset="0"
+data-aos-delay="200">
+    <h2 class="text-center">Na FoodShopee, você paga apenas pela assinatura do plano que escolher. Não cobramos comissões sobre o faturamento ou os pedidos realizados em nossa plataforma, garantindo transparência e previsibilidade em suas despesas.
+    </h2>    
+</article>
+<br>
+      <div class="row">
+        <!-- Free Tier -->
+        <div class="col-lg-4">
+          <div class="card mb-5 mb-lg-0">
+            <div class="card-body">
+              <h5 class="card-title text-muted text-uppercase text-center">Experimente Grátis</h5>
+              <h6 class="card-price text-center">$0<span class="period">/Mês</span></h6>
+              <hr>
+              <ul class="fa-ul">
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Todo Acesso do Plano Plus</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Acesso Durante 1 Semana</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Treinamento na utilização da plataforma.</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Suporte ao cliente no período</li>
+                <li class="text-muted"><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/fluency/48/cancel.png" style="display: none;" alt="cancel"/> &nbsp<i class="fas fa-times"></i></span></li>
+                <li class="text-muted"><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/fluency/48/cancel.png" style="display: none;" alt="cancel"/> &nbsp<i class="fas fa-times"></i></span></li>
+                <li class="text-muted"><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/fluency/48/cancel.png" style="display: none;" alt="cancel"/> &nbsp<i class="fas fa-times"></i></span></li>
+                <li class="text-muted"><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/fluency/48/cancel.png" style="display: none;" alt="cancel"/> &nbsp<i class="fas fa-times"></i></span></li>
+              </ul>
+              <div class="d-grid text-center">
+                <a href="https://api.whatsapp.com/send?phone=5531993839825&text=Ola%20!%20Quero%20Experimentar%20a%20Plataforma" class="btn btn-primary text-uppercase">Contatar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Plus Tier -->
+        <div class="col-lg-4">
+          <div class="card mb-5 mb-lg-0">
+            <div class="card-body">
+              <h5 class="card-title text-muted text-uppercase text-center">Plus</h5>
+              <h6 class="card-price text-center">$100<span class="period">/Mês</span></h6>
+              <hr>
+              <ul class="fa-ul">
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span><strong>Cadastro de Loja</strong></li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Acesso ao Dashboard</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Alerta de pedidos</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Cadastro de Bairros</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Cadastro de Categorias e Produtos</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Cadastro de Cumpons</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Cadastro de Adicionais</li>
+                <li class="text-muted"><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/fluency/48/cancel.png" alt="cancel"/> &nbsp<i class="fas fa-times"></i></span>Envio de email Mensal do relatorio de vendas
+                </li>
+              </ul>
+              <div class="d-grid text-center">
+                <a href="https://api.whatsapp.com/send?phone=5531993839825&text=Ola%20!%20Quero%20O%20Plano%20Plus" class="btn btn-primary text-uppercase">Contatar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pro Tier -->
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-muted text-uppercase text-center">Pro</h5> 
+              <h6 class="card-price text-center">$150<span class="period">/Mês</span></h6>
+              <hr>
+              <ul class="fa-ul">
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span><strong>Cadastro de Loja</strong>
+                </li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Acesso ao Dashboard</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Alerta de pedidos</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Cadastro de Bairros</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Cadastro de Categorias e Produtos</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Cadastro de Cumpons</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Cadastro de Adicionais</li>
+                <li><span class="fa-li"><img width="20" height="20" src="https://img.icons8.com/color/48/checkmark--v1.png" alt="checkmark--v1"/> &nbsp<i class="fas fa-check"></i></span>Envio de email Mensal do relatorio de vendas</li>
+              </ul>
+              <div class="d-grid text-center">
+                <a href="#" class="btn btn-primary text-uppercase disabled">Em Breve</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

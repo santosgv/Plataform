@@ -38,7 +38,10 @@ def termos(request):
     return render(request,'termos.html')
 
 def politica(request):
-    return render(request,'politicas.html')     
+    return render(request,'politicas.html')
+
+def pricing(request):
+    return render(request,'precing.html')     
 
 @cache_page(60 * 15)
 def categoria(request,id):

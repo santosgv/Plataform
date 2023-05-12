@@ -14,6 +14,7 @@ urlpatterns = [
     path("sobre", views.sobre, name='sobre'),
     path("termos", views.termos, name='termos'),
     path("politica", views.politica, name='politica'),
+    path("pricing",views.pricing, name='pricing'),
     path("categoria/<int:id>", views.categoria , name='categoria'),
     path("produto/<int:id>", views.produto, name='produto'),
     path("add_carrinho", views.add_carrinho, name='add_carrinho'),
