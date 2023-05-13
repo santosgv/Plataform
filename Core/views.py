@@ -165,20 +165,24 @@ def remover_carrinho(request, id):
     request.session.save()
     return redirect('/ver_carrinho')
 
-@cache_page(60 * 15)
+
 def finalizar_pedido(request):
     if request.method == "GET":
         categorias = Categoria.objects.all()
         bairros = Bairro.objects.all()
         imagens = Loja.objects.first()
+        avisos =Aviso.objects.all().filter(ativo=True).filter(para = '2')
         total = sum([float(i['preco']) for i in request.session['carrinho']])
         return render(request, 'finalizar_pedido.html', {'carrinho': len(request.session['carrinho']),
                                                          'imagens':imagens,
                                                          'bairros': bairros,
                                                          'categorias': categorias,
                                                          'total': total,
+                                                          'avisos':avisos,
                                                          })
     else:
+        avisos =Aviso.objects.all().filter(ativo=True).filter(para = '2')
+        imagens = Loja.objects.first()
         if len(request.session['carrinho']) > 0:
             x = request.POST
             total = sum([float(i['preco']) for i in request.session['carrinho']])
@@ -203,7 +207,7 @@ def finalizar_pedido(request):
 
             lambda_func_troco = lambda x: int(x['troco_para']) - total if not x['troco_para'] == '' else ""
             lambda_func_pagamento = lambda x: 'Cartão' if x['meio_pagamento'] == '2' else 'Dinheiro'
-            pedido = Pedido(usuario=x['nome'],
+            pedido = Pedido(cliente=x['nome'],
                             total=total,
                             troco=lambda_func_troco(x),
                             cupom=cupom_salvar,
@@ -224,16 +228,15 @@ def finalizar_pedido(request):
                     produto=v['produto'],
                     quantidade=v['quantidade'],
                     preco=v['preco'],
-                    descricao=v['observacoes'],
+                    obsrvacao=v['observacoes'],
                     adicionais=str(v['adicionais'])
                 ) for v in listaCarrinho
 
             )
-            avisos =Aviso.objects.all().filter(ativo=True).filter(para = '2')
-            imagens = Loja.objects.first()
             request.session['carrinho'].clear()
             request.session.save()
             return render(request, 'pedido_realizado.html',{
+                 'imagens':imagens,
                 'avisos':avisos
             })
         else:

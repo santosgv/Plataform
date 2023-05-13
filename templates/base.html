@@ -94,7 +94,7 @@ style="background-image:url({% static 'img/uma-vista-frontal-food.png' %});">
 </div>
 
     <div class="text-center" role="alert">
-     {% cache 180 avisos %}
+    
         {% if avisos %}
         {% for aviso in avisos%}
         <div class="alert {{aviso.tag}}" role="alert">
@@ -102,7 +102,7 @@ style="background-image:url({% static 'img/uma-vista-frontal-food.png' %});">
         </div>
         {% endfor %}
         {% endif %}
-        {%endcache%}
+
       </div>
  
     {% block 'body' %}
