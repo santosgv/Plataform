@@ -5575,7 +5575,8 @@ button.bg-beige:focus {
 
 .mt-5,
 .my-5 {
-  margin-top: 3rem !important; }
+  margin-top: 3rem !important;
+font-size: 0.95rem; }
 
 .mr-5,
 .mx-5 {
@@ -5666,7 +5667,8 @@ button.bg-beige:focus {
   padding-left: 1rem !important; }
 
 .p-4 {
-  padding: 1.5rem !important; }
+  padding: 1.5rem !important;
+font-size: 0.95rem; }
 
 .pt-4,
 .py-4 {

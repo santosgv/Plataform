@@ -81,7 +81,7 @@ class CupomDesconto(models.Model):
         return self.codigo
 
 class Pedido(models.Model):
-    usuario = models.CharField(max_length=200)
+    cliente = models.CharField(max_length=200)
     total = models.FloatField()
     troco = models.CharField(blank=True, max_length=20)
     cupom = models.ForeignKey(CupomDesconto, null=True, blank=True, on_delete=models.DO_NOTHING)
@@ -98,14 +98,14 @@ class Pedido(models.Model):
     
 
     def __str__(self):
-        return self.usuario
+        return self.cliente
 
 class ItemPedido(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     quantidade = models.IntegerField()
     preco = models.FloatField()
-    descricao = models.TextField()
+    obsrvacao = models.TextField()
     adicionais = models.TextField()
 
 class Aviso(models.Model):

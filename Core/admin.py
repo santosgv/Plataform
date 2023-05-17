@@ -53,7 +53,7 @@ class AdicionalAdmin(admin.ModelAdmin):
 
 class itemPedidoInline(admin.TabularInline):
     list_display = ('observacoes')
-    readonly_fields = ('produto', 'quantidade', 'preco', 'descricao', 'adicionais','id',)
+    readonly_fields = ('produto', 'quantidade', 'preco', 'obsrvacao', 'adicionais','id',)
     model = ItemPedido
     extra = 0
 
@@ -63,9 +63,9 @@ class PedidoAdmin(admin.ModelAdmin):
     inlines = [
         itemPedidoInline
     ]
-    list_display = ('id','usuario', 'total','data','entregue',)
+    list_display = ('id','cliente', 'total','data','entregue',)
     search_fields = ('entregue',)
-    readonly_fields = ('usuario', 'total','cupom','frete', 'troco', 'pagamento', 'ponto_referencia', 'data', 'cep', 'rua', 'numero', 'bairro', 'telefone')
+    readonly_fields = ('cliente', 'total','cupom','frete', 'troco', 'pagamento', 'ponto_referencia', 'data', 'cep', 'rua', 'numero', 'bairro', 'telefone')
     list_filter = ('entregue','data',)
     actions = [action_entregar_pedidos,]
 
