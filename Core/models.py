@@ -51,8 +51,8 @@ class Produto(models.Model):
     img = models.ImageField(upload_to='post_img')
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     preco = models.FloatField()
-    descricao = models.TextField()
-    ingredientes = models.CharField(max_length=2000)
+    descricao = models.TextField(max_length=2000)
+    ingredientes = models.TextField(max_length=2000)
     adicionais = models.ManyToManyField(Adicional, blank=True)
     ativo = models.BooleanField(default=True)
 

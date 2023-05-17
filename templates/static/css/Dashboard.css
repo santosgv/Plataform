@@ -49,3 +49,7 @@
 .grafico {
     text-align: center;
 }
+
+.labels{
+    display: block;
+}
