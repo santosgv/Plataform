@@ -4,10 +4,23 @@
 <title>{% block 'title' %}
 	Termos de Serviço
 	{% endblock %}</title>
+	{% block 'head' %}
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JV8YZKQ6ME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-JV8YZKQ6ME');
+</script>
+			{% endblock %}
         {% block 'body' %}
         <div class="text-center container">
             <br>
+			<div style="text-align:left ;">
+			<span>Atualizado: 30/05/2023</span>
+		</div>
 	<h1 class="name_footer">Termos de Serviço</h1>
 
 	<p>Estes termos e condições ("Termos") regem o uso da plataforma de delivery oferecida por FoodShopee. Ao utilizar a Plataforma, você concorda com estes Termos. Se você não concorda com estes Termos, não use a Plataforma.  Em caso de dúvidas, entre em contato conosco através do nosso canal de suporte.</p>
