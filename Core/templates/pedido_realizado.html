@@ -1,6 +1,21 @@
 
 {% extends 'base.html'%}
 {% load cache %}
+<title>{% block 'title' %}
+	Pedido Realizado
+	{% endblock %}</title>
+{% block 'head' %}
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JV8YZKQ6ME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JV8YZKQ6ME');
+</script>
+			{% endblock %}
+
 {% block 'body' %}
 <div class="alert alert-success text-center" role="alert">
     Seu pedido foi realizado com sucesso

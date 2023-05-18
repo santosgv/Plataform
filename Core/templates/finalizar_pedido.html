@@ -6,7 +6,15 @@
 Checkout
 {% endblock %}
 {% block 'head' %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JV8YZKQ6ME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-JV8YZKQ6ME');
+</script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="{% static 'css/finalizar_pedido.css' %}" />
 <script>$(document).ready(function() {
@@ -181,7 +189,7 @@ Checkout
 
     <h3 class="rosa">Meio de pagamento<span class="importante">*</span>:</h3>
     <select name="meio_pagamento" class="form-control" onchange="javascript:dinheiro(this);">
-        <option value="1">Dinheiro</option>
+        <option value="1">Dinheiro / Pix </option>
         <option value="2">Cartão</option>
     </select>
 

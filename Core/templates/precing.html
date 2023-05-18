@@ -6,6 +6,14 @@
 	{% endblock %}</title>
 
     {% block 'head' %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JV8YZKQ6ME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JV8YZKQ6ME');
+</script>
     <link rel="stylesheet" href="{% static 'css/precing.css' %}">
 			{% endblock %}
 

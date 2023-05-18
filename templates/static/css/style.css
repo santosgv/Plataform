@@ -7071,6 +7071,7 @@ a.text-beige:hover, a.text-beige:focus {
     border-color: #dee2e6; } }
 
 .hero1 {
+  background-attachment:fixed;
   min-height: 80vh;
   padding: 50px 0;
   background-color: rgba(0, 0, 0, 0.5);
