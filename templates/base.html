@@ -31,8 +31,10 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"> <a class="nav-link" href="{% url 'Core:index' %}">Bem Vindo<span class="sr-only">(current)</span></a>
                     </li>
-                    <!--  <li class="nav-item"> <a class="nav-link" href="/admin/">Area Adiministrativa</a> -->
+                    {% if user.is_authenticated %}
+                      <li class="nav-item"> <a class="nav-link" href="/admin/">Area Adiministrativa</a>
                     </li>
+                    {% endif %}
                 </ul> 
             </div>
           
