@@ -24,6 +24,7 @@
 
 
 {% block 'body' %}
+{% if user.is_superuser %} 
 <div class="container">
     <br>
     <div class="labels row">
@@ -97,4 +98,8 @@
 
 }
 </script>
+{% endif %}
+<div class="card-body">
+    <h5 class="card-title text-center name_footer">Acesso Nao Autorizado !</h5>
+  </div>
 {% endblock %}
