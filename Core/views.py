@@ -291,7 +291,7 @@ def total_vendas(request):
     return JsonResponse({'total_vendas': total_vendas})
 
 @login_required(login_url='/admin/')
-#@cache_page(60 * 15)
+@cache_page(60 * 15)
 def ticket_medio(request):
     total_vendas = Pedido.objects.filter(entregue=True).aggregate(total=Sum('total'))['total']
     numero_pedidos = Pedido.objects.count()
@@ -300,7 +300,7 @@ def ticket_medio(request):
     return JsonResponse({'ticket_medio':ticket})
 
 @login_required(login_url='/admin/')
-#@cache_page(60 * 15)
+@cache_page(60 * 15)
 def mais_vendidos(request):    
     agora = datetime.now()
     um_mes_atras = agora.replace(month=agora.month-1)
@@ -318,13 +318,13 @@ def mais_vendidos(request):
     return JsonResponse({'mais_vendido':mais_vendido.nome_produto})
 
 @login_required(login_url='/admin/')
-#@cache_page(60 * 15)
+@cache_page(60 * 15)
 def bairro_mais_pedido(request):
     bairro_mais_pedido = Pedido.objects.values('bairro__Nome').annotate(total_pedidos=Count('id')).order_by('-total_pedidos').first()
     return JsonResponse({'bairro_mais_pedido':bairro_mais_pedido['bairro__Nome']})
 
 @login_required(login_url='/admin/')
-#@cache_page(60 * 15)
+@cache_page(60 * 15)
 def vendas_ultimos_12_meses(request):
     hoje = datetime.today()
     data_limite = hoje - timedelta(days=365)
