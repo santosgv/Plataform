@@ -75,7 +75,25 @@
     </div>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-md">
+        <div class="grafico">
+        <canvas id="#" width="250" height="200"></canvas>
+    </div>
+    </div>
+    <div class="col-md">
+        <div class="grafico">
+            <br>
+        <h1>Fluxo de Caixa Mensal:</h1>
+        <canvas id="fluxo_mensal" width="250" height="200"></canvas>
+    </div>
+    </div>
+    <div class="col-md">
+        <div class="grafico">
+        <canvas id="#" width="250" height="200"></canvas>
+    </div>
+    </div>
+</div>
 
 
 
@@ -93,12 +111,14 @@
     renderiza_tikect_medio('{% url "Core:ticket_medio" %}')
     renderiza_bairro_mais_pedido('{% url "Core:bairro_mais_pedido" %}')
     renderiza_total_vendas_12_meses('{% url "Core:vendas_ultimos_12_meses" %}')
+    renderiza_fluxo_12_meses('{% url "Core:transacoes_mensais" %}')
 
 
 }
 </script>
-{% endif %}
+{% else %}
 <div class="card-body">
     <h5 class="card-title text-center name_footer">Acesso Nao Autorizado !</h5>
   </div>
+  {% endif %}
 {% endblock %}
