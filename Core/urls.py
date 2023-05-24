@@ -30,6 +30,7 @@ urlpatterns = [
     path("bairro_mais_pedido/", views.bairro_mais_pedido, name='bairro_mais_pedido'),
     path("vendas_ultimos_12_meses/", views.vendas_ultimos_12_meses, name='vendas_ultimos_12_meses'),
     path("sinalizar_pedidos/", views.sinalizar_pedidos, name='sinalizar_pedidos'),
+    path("transacoes_mensais/", views.transacoes_mensais, name='transacoes_mensais'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

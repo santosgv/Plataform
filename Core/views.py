@@ -3,7 +3,7 @@ from django.http import HttpResponse ,JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .models import Adicional, CupomDesconto, ItemPedido, Loja, Opcao, Pedido, Produto,Categoria , Bairro, Aviso
+from .models import Adicional, CupomDesconto, ItemPedido, Loja, Opcao, Pedido, Produto,Categoria , Bairro, Aviso, Transacao
 from django.contrib import messages
 from django.contrib.messages import constants
 from django.views.decorators.cache import cache_page
@@ -291,7 +291,7 @@ def total_vendas(request):
     return JsonResponse({'total_vendas': total_vendas})
 
 @login_required(login_url='/admin/')
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 def ticket_medio(request):
     total_vendas = Pedido.objects.filter(entregue=True).aggregate(total=Sum('total'))['total']
     numero_pedidos = Pedido.objects.count()
@@ -300,7 +300,7 @@ def ticket_medio(request):
     return JsonResponse({'ticket_medio':ticket})
 
 @login_required(login_url='/admin/')
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 def mais_vendidos(request):    
     agora = datetime.now()
     um_mes_atras = agora.replace(month=agora.month-1)
@@ -318,13 +318,13 @@ def mais_vendidos(request):
     return JsonResponse({'mais_vendido':mais_vendido.nome_produto})
 
 @login_required(login_url='/admin/')
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 def bairro_mais_pedido(request):
     bairro_mais_pedido = Pedido.objects.values('bairro__Nome').annotate(total_pedidos=Count('id')).order_by('-total_pedidos').first()
     return JsonResponse({'bairro_mais_pedido':bairro_mais_pedido['bairro__Nome']})
 
 @login_required(login_url='/admin/')
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 def vendas_ultimos_12_meses(request):
     hoje = datetime.today()
     data_limite = hoje - timedelta(days=365)
@@ -341,3 +341,49 @@ def sinalizar_pedidos(request):
         return HttpResponse('OK', status=200)
     else:
         return HttpResponse('sem pedido', status=404)
+
+def transacoes_mensais(request):
+    # Realiza uma agregação dos valores das transações por mês e tipo
+    transacoes_mensais = Transacao.objects.values('data__year', 'data__month', 'tipo').annotate(
+        total=Sum('valor'),
+        quantidade=Count('id')
+    )
+
+    # Cria um dicionário para armazenar os totais mensais de despesas e receitas
+    dados_mensais = {}
+
+    # Itera sobre as transações agregadas e agrupa os totais por mês e tipo
+    for transacao in transacoes_mensais:
+        ano = transacao['data__year']
+        mes = transacao['data__month']
+        tipo = transacao['tipo']
+        total = transacao['total']
+        quantidade = transacao['quantidade']
+
+        # Verifica se já existe um registro para o mês e tipo atual
+        if (ano, mes) in dados_mensais:
+            dados_mensais[(ano, mes)][tipo] = {
+                'total': total,
+                'quantidade': quantidade
+            }
+        else:
+            dados_mensais[(ano, mes)] = {
+                tipo: {
+                    'total': total,
+                    'quantidade': quantidade
+                }
+            }
+
+    # Cria uma lista de dicionários com os dados agrupados por mês
+    dados_mensais = [
+        {
+            'ano': ano,
+            'mes': mes,
+            'despesa': dados.get('despesa', {'total': 0, 'quantidade': 0}),
+            'receita': dados.get('receita', {'total': 0, 'quantidade': 0}),
+        }
+        for (ano, mes), dados in dados_mensais.items()
+    ]
+
+    # Retorna os dados como JsonResponse
+    return JsonResponse({'data': dados_mensais}, safe=False)

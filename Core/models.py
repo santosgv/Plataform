@@ -125,3 +125,19 @@ class Aviso(models.Model):
 
     def __str__(self) -> str:
         return self.mensagem
+
+class Transacao(models.Model):
+    TIPOS = (
+        ('receita', 'Receita'),
+        ('despesa', 'Despesa'),
+    )
+    tipo = models.CharField(max_length=10, choices=TIPOS)
+    descricao = models.CharField(max_length=100)
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    data = models.DateField()
+
+    def __str__(self):
+        return self.descricao
+    
+    class Meta:
+        verbose_name_plural = "Caixa"

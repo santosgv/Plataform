@@ -66,7 +66,6 @@ function renderiza_total_vendas_12_meses(url){
     .then(response => response.json())  // Converte a resposta em JSON
     .then(data => {
       // Extrai as informações relevantes do objeto JSON para gerar o gráfico
-
       const labels = data.data.map(item => item.mes_venda);
       const values = data.data.map(item => item.total_vendas);
       const canvas = document.getElementById('faturamento_mensal').getContext('2d');
@@ -102,4 +101,52 @@ function renderiza_total_vendas_12_meses(url){
     .catch(error => console.error(error));
 
 
+}
+
+
+
+function renderiza_fluxo_12_meses(url) {
+  fetch(url)
+    .then(response => response.json())  // Converte a resposta em JSON
+    .then(data => {
+      // Extrai as informações relevantes do objeto JSON para gerar o gráfico
+
+      const labels = data.data.map(item => `${item.mes}/${item.ano}`);
+      const despesas = data.data.map(item => item.despesa.total);
+      const receitas = data.data.map(item => item.receita.total);
+      const canvas = document.getElementById('fluxo_mensal').getContext('2d');
+
+      // Configura o gráfico
+      const chart = new Chart(canvas, {
+        type: "bar",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Despesa",
+              data: despesas,
+              backgroundColor: "red",
+            },
+            {
+              label: "Receita",
+              data: receitas,
+              backgroundColor: "green",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        },
+      });
+    })
+    .catch(error => console.error(error));
 }
