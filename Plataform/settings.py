@@ -1,4 +1,3 @@
-
 from pathlib import Path
 from datetime import timedelta
 import os
@@ -13,8 +12,19 @@ SECRET_KEY =config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=True, cast=bool)
 
+if not DEBUG:
+	SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+	SECURE_SSL_REDIRECT = True
+	SESSION_COOKIE_SECURE = True
+	CSRF_COOKIE_SECURE = True
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS')
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25
+
+
+ALLOWED_HOSTS = ['*']
+
+SCHEDULER_AUTOSTART=True
 
 
 # Application definition
@@ -28,11 +38,45 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'corsheaders',
+    'django_celery_beat',
     'Core',
 ]
 
+SHARED_APPS = [
+    'django_tenants',  
+    'Cliente',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'debug_toolbar',
+    'corsheaders',
+    'django_celery_beat',
+    'Core', 
+]
+
+TENANT_APPS = [
+    # The following Django contrib apps must be in TENANT_APPS
+    'django.contrib.contenttypes',
+    'django.contrib.auth',
+    'django.contrib.admin',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'corsheaders',
+    # tenant-specific apps
+     'Core',
+]
+INSTALLED_APPS = list(SHARED_APPS) + [
+    app for app in TENANT_APPS if app not in SHARED_APPS
+]
+
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    'django_tenants.middleware.main.TenantMainMiddleware',
+    'Plataform.middleware.TenantActiveMiddleware',
+    #'Plataform.middleware.RemoveWWWMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -45,6 +89,8 @@ MIDDLEWARE = [
 
 INTERNAL_IPS = [
     "127.0.0.1",
+    'localhost',
+    ''
 ]
 
 ROOT_URLCONF = 'Plataform.urls'
@@ -77,11 +123,29 @@ WSGI_APPLICATION = 'Plataform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django_tenants.postgresql_backend',
+        'NAME': config('BANCO'),
+        'USER': config('BANCO_USER'),
+        'PASSWORD': config('BANCO_PASSWORD'),
+        'HOST': config('BANCO_HOST'),
+        'PORT': '5432',
     }
 }
 
+DATABASE_ROUTERS = (
+
+    'django_tenants.routers.TenantSyncRouter',
+ )
+
+TENANT_MODEL = "Cliente.Cliente"
+
+TENANT_DOMAIN_MODEL = "Cliente.Domain"
+
+TENANT_COLOR_ADMIN_APPS = False
+
+
+#limita as chamadas no  search_path
+TENANT_LIMIT_SET_CALLS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -102,8 +166,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ALLOWED_ORIGINS : True
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 CORS_ALLOW_HEADERS = [
     "accept",
@@ -140,6 +202,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
 STATIC_ROOT = os.path.join('static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# unifica os arquvios storege por inquelino
+#DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
+
 MEDIA_URL = '/media/'
 
 MESSAGE_TAGS = {
@@ -160,12 +226,28 @@ EMAIL_HOST='smtp.gmail.com'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-# AWS_S3_SIGNATURE_NAME = 's3v4',
-# AWS_S3_REGION_NAME = 'sa-east-1'
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL =  None
-# AWS_S3_VERITY = True
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# celery
+
+
+CELERY_BROKER_URL=config('CELERY_BROKER_URL')
+#CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/Sao_Paulo'
+
+# celery Beat
+
+CELERY_BEAT_SCHEDULER ="django_celery_beat.schedulers:DatabaseScheduler"
+
+# AWS amazon
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'sa-east-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
