@@ -19,81 +19,59 @@
 </script>
 	{% endblock %}
 
-
-{% block 'body' %}
-{% if imagens %}
+	{% block 'body' %}
+	{% if imagens %}
 	<div class="maincontent">
 		<div class="container">
 			<section id="menu">
 				<div class="block menu1">
 					<div class="buttons-container"> 
-						{% cache 180 categoria %}
+
+						{% cache 900 categoria %}
 						{% for categoria in Categorias %}
-						<a href="{% url 'Core:categoria' categoria.id %}" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
+							{% if forloop.first %}
+								<a href="#" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
+							{% else %}
+								<a href="#" class="button" data-target="{{categoria}}">{{categoria}}</a>
+							{% endif %}
 						{% endfor %}
 						{% endcache %}
 					</div>
-					{% cache 180 cardapio %}
-					<!-- Start for  Menu -->
+				
+					
 					{% for categoria in Categorias %}
-
-					{% if forloop.first %}
-					<div class="menu menu--is-visible" id="{{categoria}}" data-aos="fade-up">
-						{% for produto in Produtos %}
-						{% if produto.categoria.id == categoria.id %}
-						<div class="item row align-items-center">
-							<div class="col-sm-3 pr-5">
-								<img class="product-img" src="{{produto.img.url}}">
-							</div>
-							<div class="details col-sm-9">
-								<div class="item__header">
-									<h3 class="item__title">{{produto}}</h3>
-									<span class="item__dots"></span>
-									<span class="item__price">${{produto.preco|floatformat}}</span>
-								</div>
-								<p class="item__description">{{produto.descricao}}</p>
-								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
-								{% if imagens.aberta == False %}
-								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn disabled" data-id="{{produto.id}}"
-									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="{{produto.img.url}}">Loja Fechada</a>
-								{%else%}
-								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
-									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="{{produto.img.url}}">Ver Produto</a>
-									{% endif %}	
-							</div>
+						<div class="menu" id="{{categoria}}"{% if forloop.first %} data-aos="fade-up"{% endif %}>
+							{% for produto in Produtos %}
+								{% if produto.categoria.id == categoria.id %}
+									<div class="item row align-items-center">
+										<div class="col-sm-3 pr-5">
+											<img class="product-img" src="{{produto.img.url}}">
+										</div>
+										<div class="details col-sm-9">
+											<div class="item__header">
+												<h3 class="item__title">{{produto}}</h3>
+												<span class="item__dots"></span>
+												<span class="item__price">${{produto.preco|floatformat}}</span>
+											</div>
+											<p class="item__description">{{produto.descricao}}</p>
+											<p class="item__description">Ingredientes: {{produto.ingredientes}}</p>
+											{% if imagens.aberta == False %}
+												<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn disabled" data-id="{{produto.id}}"
+													data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
+													data-image="{{produto.img.url}}">Loja Fechada</a>
+											{% else %}
+												<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
+													data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
+													data-image="{{produto.img.url}}">Ver Produto</a>
+											{% endif %}	
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
 						</div>
-						{% endif %}
-						{% endfor %}
-					</div>
-					{% endif %}
-					<div class="menu" id="{{categoria}}" data-aos="fade-up">
-						{% for produto in Produtos %}
-						{% if produto.categoria.id == categoria.id %}
-						<div class="item row align-items-center">
-							<div class="col-sm-3 pr-5">
-								<img class="product-img" src="{{produto.img.url}}">
-							</div>
-							<div class="details col-sm-9">
-								<div class="item__header">
-									<h3 class="item__title">{{produto}}</h3>
-									<span class="item__dots"></span>
-									<span class="item__price">${{produto.preco|floatformat}}</span>
-								</div>
-								<p class="item__description">{{produto.descricao}}</p>
-								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
-								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
-									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="{{produto.img.url}}">Ver Produto</a>
-							</div>
-						</div>
-						{% endif %}
-						{% endfor %}
-					</div>
+						<h1>{{produto}}</h1>
 					{% endfor %} 
-					{% endcache%}
-					<!-- End For Menu -->
+				
 				</div>
 				<!-- End block -->
 			</section>
@@ -161,77 +139,66 @@
 			<section id="menu">
 				<div class="block menu1">
 					<div class="buttons-container"> 
-						{% cache 180 categoria %}
+
+						{% cache 900 categoria %}
 						{% for categoria in Categorias %}
-						<a href="{% url 'Core:categoria' categoria.id %}" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
+							{% if forloop.first %}
+								<a href="#" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
+							{% else %}
+								<a href="#" class="button" data-target="{{categoria}}">{{categoria}}</a>
+							{% endif %}
 						{% endfor %}
 						{% endcache %}
 					</div>
-					{% cache 180 cardapio %}
-					<!-- Start for  Menu -->
+				
+					{% cache 900 cardapio %}
 					{% for categoria in Categorias %}
-
-					{% if forloop.first %}
-					<div class="menu menu--is-visible" id="{{categoria}}" data-aos="fade-up">
-						{% for produto in Produtos %}
-						{% if produto.categoria.id == categoria.id %}
-						<div class="item row align-items-center">
-							<div class="col-sm-3 pr-5">
-								<img class="product-img" src="{{produto.img.url}}">
-							</div>
-							<div class="details col-sm-9">
-								<div class="item__header">
-									<h3 class="item__title">{{produto}}</h3>
-									<span class="item__dots"></span>
-									<span class="item__price">${{produto.preco|floatformat}}</span>
-								</div>
-								<p class="item__description">{{produto.descricao}}</p>
-								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
-								{% if imagens.aberta == False %}
-								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn disabled" data-id="{{produto.id}}"
-									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="{{produto.img.url}}">Loja Fechada</a>
-								{%else%}
-								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
-									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="{{produto.img.url}}">Ver Produto</a>
-									{% endif %}	
-							</div>
+						<div class="menu" id="{{categoria}}"{% if forloop.first %} data-aos="fade-up"{% endif %}>
+							{% for produto in Produtos %}
+								{% if produto.categoria.id == categoria.id %}
+									<div class="item row align-items-center">
+										<div class="col-sm-3 pr-5">
+											<img class="product-img" src="{{produto.img.url}}">
+										</div>
+										<div class="details col-sm-9">
+											<div class="item__header">
+												<h3 class="item__title">{{produto}}</h3>
+												<span class="item__dots"></span>
+												<span class="item__price">${{produto.preco|floatformat}}</span>
+											</div>
+											<p class="item__description">{{produto.descricao}}</p>
+											<p class="item__description">Ingredientes: {{produto.ingredientes}}</p>
+											{% if imagens.aberta == False %}
+												<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn disabled" data-id="{{produto.id}}"
+													data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
+													data-image="{{produto.img.url}}">Loja Fechada</a>
+											{% else %}
+												<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
+													data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
+													data-image="{{produto.img.url}}">Ver Produto</a>
+											{% endif %}	
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
 						</div>
-						{% endif %}
-						{% endfor %}
-					</div>
-					{% endif %}
-					<div class="menu" id="{{categoria}}" data-aos="fade-up">
-						{% for produto in Produtos %}
-						{% if produto.categoria.id == categoria.id %}
-						<div class="item row align-items-center">
-							<div class="col-sm-3 pr-5">
-								<img class="product-img" src="{{produto.img.url}}">
-							</div>
-							<div class="details col-sm-9">
-								<div class="item__header">
-									<h3 class="item__title">{{produto}}</h3>
-									<span class="item__dots"></span>
-									<span class="item__price">${{produto.preco|floatformat}}</span>
-								</div>
-								<p class="item__description">{{produto.descricao}}</p>
-								<p class="item__description">Ingredientes : {{produto.ingredientes}}</p>
-								<a href="{% url 'Core:produto' produto.id%}" class="btn btn-sm btn-outline-primary my-cart-btn" data-id="{{produto.id}}"
-									data-name="{{produto}}" data-price="{{produto.preco|floatformat}}" data-quantity="1"
-									data-image="{{produto.img.url}}">Ver Produto</a>
-							</div>
-						</div>
-						{% endif %}
-						{% endfor %}
-					</div>
+						<h1>{{produto}}</h1>
 					{% endfor %} 
-					{% endcache%}
-					<!-- End For Menu -->
+					{% endcache %}
 				</div>
 				<!-- End block -->
 			</section>
 		</div>
 	</div>
+
 	{% endif %}
-{% endblock %}
+	<script src="{% static 'js/mycart.js' %}"></script>
+	<script src="{% static 'js/mycart-custom.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+	<script src="{% static 'js/custom-general.js' %}"></script>
+	
+	{% endblock %}
