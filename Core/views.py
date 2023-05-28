@@ -31,40 +31,50 @@ def index(request):
                                          'avisos':avisos,
                                          })
 
+@cache_page(60 * 15)
 def sobre(request):
     return render(request,'about.html')
 
+@cache_page(60 * 15)
 def termos(request):
     return render(request,'termos.html')
 
+@cache_page(60 * 15)
 def politica(request):
     return render(request,'politicas.html')
 
+@cache_page(60 * 15)
 def pricing(request):
     return render(request,'precing.html')     
 
 @cache_page(60 * 15)
 def categoria(request,id):
+    imagens = Loja.objects.first()
+    Categorias = Categoria.objects.all()
     if not request.session.get('carrinho'):
         request.session['carrinho'] = []
         request.session.save()
-    Categorias = Categoria.objects.all()
     Produtos = Produto.objects.all().filter(categoria=id).filter(ativo=True)
 
     return render(request,'index.html',{
+                                        'imagens':imagens,
                                          'Produtos':Produtos,
                                          'Categorias':Categorias,
                                          })
 
 def produto(request, id):
+    imagens = Loja.objects.first()
+    Categorias = Categoria.objects.all()
+    avisos =Aviso.objects.all().filter(ativo=True).filter(para = '1')
     if not request.session.get('carrinho'):
         request.session['carrinho'] = []
         request.session.save()
         
     produto = Produto.objects.filter(id=id)[0]
-    imagens = Loja.objects.first()
     return render(request, 'produto.html', {'produto': produto,
                                             'imagens':imagens,
+                                            'Categorias':Categorias,
+                                            'avisos':avisos,
                                             'carrinho': len(request.session['carrinho']),
                                            })
 
@@ -279,8 +289,10 @@ def robots(request):
             return HttpResponse(arq, content_type='text/plain')
 
 @login_required(login_url='/admin/')
+@cache_page(60 * 15)
 def dashbords(request):
-    return render(request,'dashbords.html')
+    imagens = Loja.objects.first()
+    return render(request,'dashbords.html',{'imagens':imagens,})
 
 @login_required(login_url='/admin/')
 @cache_page(60 * 15)
