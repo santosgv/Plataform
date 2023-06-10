@@ -39,9 +39,9 @@
 						{% endcache %}
 					</div>
 				
-					
+					{% cache 900 cardapio %}
 					{% for categoria in Categorias %}
-						<div class="menu" id="{{categoria}}"{% if forloop.first %} data-aos="fade-up"{% endif %}>
+					<div id="{{categoria}}" class="menu {% if forloop.first %}menu--is-visible{% endif %}"{% if forloop.first %}  data-aos="fade-up"{% endif %}>
 							{% for produto in Produtos %}
 								{% if produto.categoria.id == categoria.id %}
 									<div class="item row align-items-center">
@@ -72,7 +72,7 @@
 						</div>
 						<h1>{{produto}}</h1>
 					{% endfor %} 
-				
+					{% endcache %}
 				</div>
 				<!-- End block -->
 			</section>
@@ -143,7 +143,7 @@
 		<h2 class="text-center">Tipos de negócio que atendemos
 		</h2>    
 	  </article>
-		<div class="row">
+		<div class="row" id="atendemos">
     <div class="col">
 		<div class="card-body">
 			<h5 class="card-title"><img width="50" height="50" src="https://img.icons8.com/glyph-neue/64/ff7f50/hamburger.png" alt="hamburger"/>Hamburguerias</h5>
@@ -199,7 +199,7 @@
 				
 					{% cache 900 cardapio %}
 					{% for categoria in Categorias %}
-						<div class="menu" id="{{categoria}}"{% if forloop.first %} data-aos="fade-up"{% endif %}>
+						<div id="{{categoria}}" class="menu {% if forloop.first %}menu--is-visible{% endif %}"{% if forloop.first %}  data-aos="fade-up"{% endif %}>
 							{% for produto in Produtos %}
 								{% if produto.categoria.id == categoria.id %}
 									<div class="item row align-items-center">
