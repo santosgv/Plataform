@@ -1,8 +1,8 @@
-User-agent: *
-Dissalow: /admin
-Dissalow: /admin/
-Allow: /
-Allow: /index
-Allow: /produto
-Allow: /ver_carrinho
-Allow: /finalizar_pedido/
+user-agent: *
+disallow: /admin
+disallow: /admin/
+allow: /
+allow: /index
+allow: /produto
+allow: /ver_carrinho
+allow: /finalizar_pedido/
