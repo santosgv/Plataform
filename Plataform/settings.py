@@ -256,6 +256,6 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": config('CELERY_BROKER_URL'),
+        "LOCATION": 'redis://191.252.210.233:6379',
     }
 }
