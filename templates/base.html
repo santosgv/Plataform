@@ -23,7 +23,7 @@
     {% if imagens %}
     <div>
     </div>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="{{ imagens.logo.url }}" style="height: 50px;"></a>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="{{ imagens.logo.url }}" style="height: 50px; width: 50px;" alt="logo"></a>
         <button
         class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
@@ -63,7 +63,7 @@ style="background-image:url({{ imagens.backgroud.url }});">
 </a>
 {% else %}
 
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="{% static 'img/logo.webp' %}" style="height: 50px;"></a>
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="{% url 'Core:index' %}"><img src="{% static 'img/logo.webp' %}" style="height: 50px; width: 50px;" alt="logo"></a>
     <button
     class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
@@ -132,10 +132,10 @@ style="background-image:url({% static 'img/uma-vista-frontal-food.webp' %});">
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
             <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3"></i> <span class="name_footer"><img src="{% static 'img/logo.webp' %}" alt="" style="height: 50px;"></span>
+              <i class="fas fa-gem me-3"></i> <span class="name_footer"><img src="{% static 'img/logo.webp' %}" style="height: 50px; width: 50px;" alt="logo"></span>
             </h6>
             <p>
-                <a target="_blank" href="https://transparencyreport.google.com/safe-browsing/search?url=meuemenus.com.br"><img src="{% static 'img/google-safe-browsing-1.png' %}" alt=""></a>
+                <a target="_blank" href="https://transparencyreport.google.com/safe-browsing/search?url=meuemenus.com.br"><img src="{% static 'img/google-safe-browsing-1.png' %}" style="height: 50%; width: 50%;" alt="google"></a>
             </p>
           </div>
           <!-- Grid column -->
@@ -214,7 +214,7 @@ style="background-image:url({% static 'img/uma-vista-frontal-food.webp' %});">
 	<script src="{% static 'js/custom-general.js' %}"></script>
 
 
-  <!-- desativar o inspecionar elemento -->
+  <!-- desativar o inspecionar elemento
 <script id="wpcp_disable_Right_Click" type="text/javascript">
 document.ondragstart = function() { return false;}
 	function nocontext(e) {
@@ -247,7 +247,7 @@ if(e)
 	e.setAttribute('unselectable',on);
 }
 </script>
-
+ -->
 
 
     
