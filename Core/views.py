@@ -283,6 +283,8 @@ def freteBairro(request):
 def robots(request):
     if not settings.DEBUG:
         path = os.path.join(settings.STATIC_ROOT,'robots.txt')
+        with open(path,'r') as arq:
+            return HttpResponse(arq, content_type='text/plain')
     else:
         path = os.path.join(settings.BASE_DIR,'templates/static/robots.txt')
         with open(path,'r') as arq:
