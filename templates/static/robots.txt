@@ -1,6 +1,5 @@
 user-agent: *
-disallow: /admin
-disallow: /admin/
+allow: /admin
 allow: /
 allow: /index
 allow: /produto
