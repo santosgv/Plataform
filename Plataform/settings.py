@@ -256,6 +256,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": 'redis://191.252.210.233:6379',
+        "LOCATION": 'redis://191.252.210.233:6379/0',
+	    "TIMEOUT": 60,
+        "OPTIONS": {"MAX_ENTRIES": 1000},
     }
 }
