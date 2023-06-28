@@ -180,6 +180,16 @@
     </div>
   </div>
 	</section>
+
+	<article class="article" data-aos="fade-up">
+		<h2 class="text-center">Veja Uma demonstração de como ficaria!
+		</h2>
+	  </article>  
+		<div class="container">
+		  <div class="buttons-container"> 
+				<a href="https://sualoja.meuemenus.com.br/" class="btn btn-sm btn-outline-primary my-cart-btn" target="_blank">Demostraçao</a>
+		  </div>
+		</div>
 	
 	<div class="maincontent">
 		<div class="container">
@@ -187,7 +197,7 @@
 				<div class="block menu1">
 					<div class="buttons-container"> 
 
-						{% cache 900 categoria %}
+						
 						{% for categoria in Categorias %}
 							{% if forloop.first %}
 								<a href="#" class="button button--is-active" data-target="{{categoria}}">{{categoria}}</a>
@@ -195,10 +205,10 @@
 								<a href="#" class="button" data-target="{{categoria}}">{{categoria}}</a>
 							{% endif %}
 						{% endfor %}
-						{% endcache %}
+						
 					</div>
 				
-					{% cache 900 cardapio %}
+					
 					{% for categoria in Categorias %}
 						<div id="{{categoria}}" class="menu {% if forloop.first %}menu--is-visible{% endif %}"{% if forloop.first %}  data-aos="fade-up"{% endif %}>
 							{% for produto in Produtos %}
@@ -231,17 +241,9 @@
 						</div>
 						<h1>{{produto}}</h1>
 					{% endfor %} 
-					{% endcache %}
+					
 				</div>
-				<article class="article" data-aos="fade-up">
-					<h2 class="text-center">Veja Uma demonstração de como ficaria!
-					</h2>
-				</article>  
-					<div class="container">
-						<div class="buttons-container"> 
-									<a href="https://sualoja.meuemenus.com.br/" class="btn btn-sm btn-outline-primary my-cart-btn" target="_blank">Demostraçao</a>
-						</div>
-					</div>
+
 			</section>
 		</div>
 	</div>
