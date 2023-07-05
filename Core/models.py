@@ -81,6 +81,13 @@ class CupomDesconto(models.Model):
         return self.codigo
 
 class Pedido(models.Model):
+    STATUS = (       
+        ('1','Pedido recebido'),
+        ('2','Em preparação'),
+        ('3','Pedido pronto'),
+        ('4','Em rota'),
+        ('5','Problemas na entrega')
+    )
     cliente = models.CharField(max_length=200)
     total = models.FloatField()
     troco = models.CharField(blank=True, max_length=20)
@@ -95,6 +102,7 @@ class Pedido(models.Model):
     frete = models.FloatField(blank=True, max_length=20, null=True)
     telefone = models.CharField(max_length=30)
     entregue = models.BooleanField(default=False)
+    status =models.CharField(max_length=1, choices=STATUS, default=1)
     
 
     def __str__(self):
