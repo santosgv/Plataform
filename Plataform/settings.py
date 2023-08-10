@@ -135,10 +135,10 @@ USE_I18N = True
 USE_TZ = True
 
 
-#STATIC_URL = 'https://d1gbs1in5ei7w9.cloudfront.net/static/'
-STATIC_URL='/static/'
+#STATIC_URL = 'https://meuemenus.s3.sa-east-1.amazonaws.com/static/'
+STATIC_URL ='/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
-STATIC_ROOT = os.path.join(BASE_DIR,'static/')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
