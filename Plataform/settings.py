@@ -3,6 +3,8 @@ from datetime import timedelta
 import os
 from decouple import config,Csv
 from django.contrib.messages import constants
+import mimetypes 
+mimetypes.add_type("text/css", ".css", True)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -198,9 +200,9 @@ USE_TZ = True
 
 
 #STATIC_URL = 'https://d1gbs1in5ei7w9.cloudfront.net/static/'
-STATIC_URL = 'static/'
+STATIC_URL='/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
-STATIC_ROOT = os.path.join('static')
+STATIC_ROOT = os.path.join(BASE_DIR,'static/')
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
