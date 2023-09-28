@@ -25,7 +25,7 @@ jobs:
         pip install -r libs.txt
       
       env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        SECRET_KEY: '123112'
         EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
         EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
         BANCO: ${{ secrets.BANCO }}
